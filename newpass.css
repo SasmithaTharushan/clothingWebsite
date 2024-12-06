@@ -1,0 +1,117 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container */
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+/* Content */
+.content {
+    width: 100%;
+    max-width: 500px;
+    background-color: #fff;
+    border-radius: 20px;
+    padding: 3rem;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Heading */
+.heading {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #191919;
+    text-align: center;
+}
+
+/* Subheading */
+.subheading {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #666;
+    text-align: center;
+}
+
+/* Form */
+.password-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+/* Input Fields */
+.input-field {
+    display: flex;
+    flex-direction: column;
+}
+
+.input-label {
+    font-size: 1rem;
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.input-field input {
+    padding: 0.8rem;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+.input-field input:focus {
+    border-color: #6573cc;
+}
+
+/* Reset Password Button */
+.reset-button {
+    padding: 1rem;
+    background-color: #6573cc;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.reset-button:hover {
+    background-color: #4c5ab8;
+}
+
+/* Back to Login Link */
+.auth-links {
+    text-align: center;
+    margin-top: 1.5rem;
+}
+
+.auth-links a {
+    text-decoration: none;
+    color: #6573cc;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.auth-links a:hover {
+    color: #4c5ab8;
+}

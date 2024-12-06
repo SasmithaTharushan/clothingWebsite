@@ -1,0 +1,123 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #f8f9fa;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Container */
+.container {
+    display: flex;
+    width: 80%;
+    height: 80vh;
+    background-color: #fff;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Sidebar (Left Section) */
+.sidebar {
+    width: 50%;
+    background-color: #6573cc;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+    color: #fff;
+    text-align: center;
+    position: relative;
+}
+
+.brand-name {
+    font-family: 'Kaushan Script', cursive;
+    font-size: 2.5rem;
+    position: absolute;
+    bottom: 2rem;
+    text-align: center;
+}
+
+/* Main Content (Right Section) */
+.check-mail-content {
+    width: 50%;
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Heading */
+.check-mail-heading {
+    font-size: 2rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #191919;
+}
+
+/* Confirmation Message */
+.confirmation-message {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+    color: #191919;
+}
+
+/* Instruction Message */
+.instruction-message {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+    color: #666;
+}
+
+/* Resend Link Button */
+.resend-button {
+    width: 100%;
+    padding: 1rem;
+    background-color: #6573cc;
+    color: #fff;
+    border: none;
+    border-radius: 10px;
+    font-size: 1.2rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.resend-button:hover {
+    background-color: #4c5ab8;
+}
+
+/* Message Area (Success/Failure) */
+.message {
+    font-size: 1rem;
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+/* Back to Login Link */
+.auth-links {
+    font-size: 1rem;
+    text-align: center;
+}
+
+.auth-links a {
+    text-decoration: none;
+    color: #6573cc;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.auth-links a:hover {
+    color: #4c5ab8;
+}

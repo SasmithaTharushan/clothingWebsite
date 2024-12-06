@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create New Password</title>
+    <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet" />
+    <link href="newpass.css" rel="stylesheet" />
+</head>
+
+<body>
+    <div class="container">
+        <div class="content">
+            <h1 class="heading">Create New Password</h1>
+            <p class="subheading">Your new password must be unique from those previously used.</p>
+
+            <form class="password-form">
+                <!-- New Password Input -->
+                <div class="input-field">
+                    <label for="new-password" class="input-label">New Password</label>
+                    <input type="password" id="new-password" placeholder="Enter your new password" required>
+                </div>
+
+                <!-- Confirm Password Input -->
+                <div class="input-field">
+                    <label for="confirm-password" class="input-label">Confirm Password</label>
+                    <input type="password" id="confirm-password" placeholder="Confirm your new password" required>
+                </div>
+
+                <!-- Reset Button -->
+                <button type="submit" class="reset-button">Reset Password</button>
+            </form>
+
+            <div class="auth-links">
+                <span><a href="login.html">Back to Login</a></span>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
