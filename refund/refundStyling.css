@@ -1,0 +1,175 @@
+/* General Styles */
+body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f8f9fa;
+    display: flex;
+}
+
+/* Dashboard Layout */
+.dashboard {
+    display: flex;
+    width: 100%;
+}
+
+.sidebar {
+    width: 250px;
+    background: linear-gradient(135deg, #f08080, #f4a8a1);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 0;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar .profile {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.sidebar .profile img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar .menu {
+    list-style: none;
+    padding: 0;
+    width: 100%;
+}
+
+.sidebar .menu a {
+    display: block;
+    color: white;
+    padding: 12px 20px;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-weight: 500;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.sidebar .menu a.active,
+.sidebar .menu a:hover {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 8px;
+    padding-left: 25px;
+}
+
+/* Content Section */
+.content {
+    flex-grow: 1;
+    padding: 30px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+h2 {
+    font-size: 24px;
+    margin-bottom: 20px;
+    color: #f08080;
+}
+
+/* Refund Request Form */
+#request-refund form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+input[type="text"],
+input[type="number"],
+textarea {
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+textarea {
+    resize: vertical;
+}
+
+button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f08080;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+/* View Refund Requests */
+#view-requests table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+table th,
+table td {
+    padding: 15px;
+    text-align: left;
+    border: 1px solid #ddd;
+    font-size: 14px;
+}
+
+table thead {
+    background: linear-gradient(135deg, #f08080, #f4a8a1);
+    color: white;
+}
+
+table tbody tr:hover {
+    background-color: #fce4ec;
+}
+
+button.approve-btn {
+    background-color: #29a329;
+    color: white;
+}
+
+button.deny-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* Refund Process Confirmation */
+#refund-confirmation {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+}
+
+#refund-confirmation span {
+    font-weight: bold;
+}
+
+.status-approved {
+    background-color: #2eb82e;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+.status-pending {
+    background-color: #f0ad4e;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}

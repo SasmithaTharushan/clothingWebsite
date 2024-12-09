@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Request a refund for an order.">
+    <title>Request Refund</title>
+    <link rel="stylesheet" href="refundStyling.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="profile">
+                <img src="https://th.bing.com/th/id/OIP.Crq9sn3Qu3HyHwPJi2zW8QHaHa?rs=1&pid=ImgDetMain" alt="Profile">
+                <h3>Mary S.</h3>
+                <p>Customer Support</p>
+            </div>
+            <ul class="menu">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#">Request Refund</a></li>
+                <li><a href="#">View Refund Requests</a></li>
+                <li><a href="#">Orders</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Sign Out</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="refund-request-form">
+                <h2>Request a Refund</h2>
+                <form>
+                    <div class="form-group">
+                        <label for="order-id">Order ID</label>
+                        <input type="text" id="order-id" name="order-id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reason">Refund Reason</label>
+                        <textarea id="reason" name="reason" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="refund-amount">Refund Amount</label>
+                        <input type="number" id="refund-amount" name="refund-amount" required>
+                    </div>
+                    <button type="submit">Submit Request</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

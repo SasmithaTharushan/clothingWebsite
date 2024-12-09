@@ -1,0 +1,229 @@
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #f7f7f7;
+  }
+  
+  /* Container for Profile Screen */
+  .container {
+    display: flex;
+    width: 80%;
+    height: 80%;
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Left Panel */
+  .left-panel {
+    flex: 1.2;
+    background-color: #4f7cac;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 20px;
+    color: #fff;
+    position: relative;
+  }
+  
+  /* Company Name */
+  .brand {
+    margin-bottom: 30px;
+  }
+  
+  .brand h1 {
+    font-size: 2rem;
+    margin: 0;
+    text-align: center;
+    color: #fff;
+  }
+  
+  /* User Info (Name and Profile Image) */
+  .user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .profile-name {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+  }
+  
+  .image-wrapper {
+    width: 100%;
+    max-width: 150px;
+    height: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: #fff;
+  }
+  
+  .profile-image {
+    font-size: 60px;
+  }
+  
+  .edit-profile-btn {
+    margin-top: 20px;
+    padding: 12px 24px;
+    background-color: #3c5e7e;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease;
+  }
+  
+  .edit-profile-btn:hover {
+    background-color: #4f7cac;
+  }
+  
+  /* Sign Up and Help buttons inside the blue box */
+  .extra-buttons {
+    position: absolute;
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
+  
+  .nav-link {
+    display: inline-block;
+    font-size: 1rem;
+    color: #fff;
+    text-decoration: none;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: #3c5e7e;
+  }
+  
+  .nav-link .icon {
+    margin-right: 10px;
+  }
+  
+  .nav-link:hover {
+    background-color: #4f7cac;
+  }
+  
+  /* Right Panel */
+  .right-panel {
+    flex: 1;
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .profile-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .profile-header h2 {
+    font-size: 1.8rem;
+    color: #4f7cac;
+  }
+  
+  .header-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-icons .icon {
+    font-size: 1.5rem;
+    margin-left: 20px;
+    cursor: pointer;
+  }
+  
+  .profile-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 30px;
+  }
+  
+  .profile-image-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 30%;
+  }
+  
+  .profile-image-wrapper {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 3px solid #4f7cac;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #f0f0f0;
+  }
+  
+  .profile-image-wrapper .profile-image {
+    font-size: 60px;
+  }
+  
+  .edit-icon {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    background-color: #4f7cac;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+  }
+  
+  .profile-info {
+    flex: 1;
+    font-size: 1rem;
+  }
+  
+  .profile-info h3 {
+    font-size: 1.4rem;
+    color: #4f7cac;
+    margin-bottom: 10px;
+  }
+  
+  .profile-info p {
+    margin: 5px 0;
+  }
+  
+  .profile-info p strong {
+    color: #333;
+  }
+  
+  .change-password {
+    align-self: center;
+    padding: 12px 24px;
+    background-color: #4f7cac;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-size: 1rem;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .change-password:hover {
+    background-color: #3c5e7e;
+  }
+  

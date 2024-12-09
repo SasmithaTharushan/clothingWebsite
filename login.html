@@ -22,27 +22,46 @@
         <div class="login-content">
             <!-- Forgot password and registration links -->
             <div class="auth-links">
-                <span>Don’t have an account? <a href="#">Register</a></span>
-                <span><a href="#">Forgot Password?</a></span>
+                <span>Don’t have an account? <a href="register.html">Register</a></span>
+                <span><a href="forgotPass.html">Forgot Password?</a></span>
             </div>
 
             <!-- Welcome message -->
             <h1 class="welcome">Welcome back! Glad to see you, Again!</h1>
 
-            <!-- Email input -->
-            <div class="input-field">
-                <input type="email" placeholder="Enter your email" aria-label="Email">
-            </div>
+            <!-- Login form -->
+            <form id="loginForm">
+                <!-- Email input -->
+                <div class="input-field">
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
 
-            <!-- Password input -->
-            <div class="input-field">
-                <input type="password" placeholder="Enter your password" aria-label="Password">
-            </div>
+                <!-- Password input -->
+                <div class="input-field">
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
 
-            <!-- Login button -->
-            <button class="login-button">Login</button>
+                <!-- Login button -->
+                <button type="button" class="login-button" id="loginButton">Login</button>
+            </form>
         </div>
     </div>
+
+    <!-- JavaScript to handle redirection -->
+    <script>
+        document.getElementById("loginButton").addEventListener("click", function () {
+            const email = document.getElementById("email").value;
+            const password = document.getElementById("password").value;
+
+            // Basic validation
+            if (email && password) {
+                // Redirect to product.html
+                window.location.href = "product.html";
+            } else {
+                alert("Please fill in both email and password.");
+            }
+        });
+    </script>
 </body>
 
 </html>

@@ -16,10 +16,11 @@
     </div>
     <div class="right-panel">
       <h2>Hello! Register to get started</h2>
-      <form>
-        <input type="email" placeholder="Email" required />
-        <input type="password" placeholder="Password" required />
-        <input type="password" placeholder="Confirm password" required />
+      <!-- Form with action pointing to register.php for handling data submission -->
+      <form action="register.php" method="POST">
+        <input type="email" name="email" placeholder="Email" required />
+        <input type="password" name="password" placeholder="Password" required />
+        <input type="password" name="confirm_password" placeholder="Confirm password" required />
         <button type="submit">Register</button>
         <p>Or login with</p>
         <div class="social-login">
@@ -27,7 +28,7 @@
           <button type="button">Facebook</button>
           <button type="button">Apple</button>
         </div>
-        <p>Already have an account? <a href="#">Login</a></p>
+        <p>Already have an account? <a href="login.html">Login</a></p>
       </form>
     </div>
   </div>

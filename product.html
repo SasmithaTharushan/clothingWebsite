@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="A modern, user-friendly product addition page.">
+    <title>Add New Product</title>
+    <link rel="stylesheet" href="product.css">
+</head>
+
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="profile">
+                <img src="https://th.bing.com/th/id/OIP.Crq9sn3Qu3HyHwPJi2zW8QHaHa?rs=1&pid=ImgDetMain" alt="Profile">
+                <h3>Mary S.</h3>
+                <p>Product Manager</p>
+            </div>
+            <ul class="menu">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#" class="active">Add Product</a></li>
+                <li><a href="viewproduct.html">View Products</a></li>
+                <li><a href="manageproduct.html">Manage Inventory</a></li>
+                <li><a href="refund.html">Refunds</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="login.html">Sign Out</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="new-product-section">
+                <h2>Add New Product</h2>
+                <form id="productForm">
+                    <div class="form-group">
+                        <label for="product-id">Product ID</label>
+                        <input type="text" id="product-id" name="product-id" placeholder="Enter Product ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-name">Product Name</label>
+                        <input type="text" id="product-name" name="product-name" placeholder="Enter Product Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-image">Add Image</label>
+                        <input type="file" id="product-image" name="product-image" accept="image/*" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-quantity">Quantity</label>
+                        <input type="number" id="product-quantity" name="product-quantity" min="1" placeholder="Enter Quantity" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-category">Category</label>
+                        <select id="product-category" name="product-category" required>
+                            <option value="">Select Category</option>
+                            <option value="clothing">Clothing</option>
+                            <option value="accessories">Accessories</option>
+                            <option value="footwear">Footwear</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-subcategory">Subcategory</label>
+                        <input type="text" id="product-subcategory" name="product-subcategory" placeholder="Enter Subcategory">
+                    </div>
+                    <div class="form-group">
+                        <label for="sku-code">SKU/Item Code</label>
+                        <input type="text" id="sku-code" name="sku-code" placeholder="Enter SKU/Item Code" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-description">Description</label>
+                        <textarea id="product-description" name="product-description" placeholder="Enter Product Description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-discount">Discount (%)</label>
+                        <input type="number" id="product-discount" name="product-discount" min="0" max="100" placeholder="Enter Discount Percentage">
+                    </div>
+                    <button type="submit">Add Product</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById("productForm").addEventListener("submit", function (e) {
+            e.preventDefault();
+            alert("Product successfully added!");
+        });
+    </script>
+</body>
+
+</html>

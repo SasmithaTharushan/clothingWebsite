@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Refund process page with request form, view requests, and refund confirmation.">
+    <title>Refund Process</title>
+    <link rel="stylesheet" href="refund.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="profile">
+                <img src="https://th.bing.com/th/id/OIP.Crq9sn3Qu3HyHwPJi2zW8QHaHa?rs=1&pid=ImgDetMain" alt="Profile">
+                <h3>Mary S.</h3>
+                <p>Customer Support</p>
+            </div>
+            <ul class="menu">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="#" class="active">Refund Process</a></li>
+                <li><a href="#">Orders</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="#">Sign Out</a></li>
+            </ul>
+        </div>
+
+        <div class="content">
+            <!-- Request Refund Form -->
+            <section id="request-refund">
+                <h2>Request a Refund</h2>
+                <form id="refund-form">
+                    <div class="form-group">
+                        <label for="order-id">Order ID</label>
+                        <input type="text" id="order-id" name="order-id" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="reason">Refund Reason</label>
+                        <textarea id="reason" name="reason" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="refund-amount">Refund Amount</label>
+                        <input type="number" id="refund-amount" name="refund-amount" required>
+                    </div>
+                    <button type="submit">Submit Request</button>
+                </form>
+            </section>
+
+            <!-- View Refund Requests -->
+            <section id="view-requests">
+                <h2>View Refund Requests</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Reason</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>#ORD12345</td>
+                            <td>Item damaged</td>
+                            <td>$50.00</td>
+                            <td><span class="status-pending">Pending</span></td>
+                            <td>
+                                <button class="approve-btn">Approve</button>
+                                <button class="deny-btn">Deny</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>#ORD12346</td>
+                            <td>Wrong size received</td>
+                            <td>$30.00</td>
+                            <td><span class="status-approved">Approved</span></td>
+                            <td>
+                                <button class="approve-btn">Approve</button>
+                                <button class="deny-btn">Deny</button>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Refund Process Confirmation -->
+            <section id="refund-confirmation">
+                <h2>Refund Processed</h2>
+                <p>Your refund request for <strong>#ORD12345</strong> has been <span class="status-approved">approved</span>.</p>
+                <p>Refund Amount: $50.00</p>
+                <button onclick="window.location.href='#view-requests'">Back to Refund Requests</button>
+            </section>
+        </div>
+    </div>
+</body>
+</html>

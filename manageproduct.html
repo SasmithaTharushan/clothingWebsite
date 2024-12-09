@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Manage product inventory with stock adjustments and details.">
+    <title>Manage Inventory</title>
+    <link rel="stylesheet" href="manageproduct.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="profile">
+                <img src="https://th.bing.com/th/id/OIP.Crq9sn3Qu3HyHwPJi2zW8QHaHa?rs=1&pid=ImgDetMain" alt="Profile">
+                <h3>Mary S.</h3>
+                <p>Product Manager</p>
+            </div>
+            <ul class="menu">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="product.html">Add Product</a></li>
+                <li><a href="viewproduct.html">View Products</a></li>
+                <li><a href="#" class="active">Manage Inventory</a></li>
+                <li><a href="refund.html">Refunds</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="login.html">Sign Out</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="manage-inventory-section">
+                <div class="content-header">
+                    <h2>Manage Inventory</h2>
+                    <input type="text" id="search-bar" placeholder="Search product by name or ID..." oninput="searchInventory()" />
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Name</th>
+                            <th>Quantity</th>
+                            <th>Category</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="inventory-list">
+                        <!-- Inventory items will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dummy products for demonstration
+        const products = [
+            {
+                id: 'P001',
+                name: 'Red Shirt',
+                quantity: 10,
+                category: 'Clothing',
+            },
+            {
+                id: 'P002',
+                name: 'Blue Jeans',
+                quantity: 5,
+                category: 'Clothing',
+            },
+            {
+                id: 'P003',
+                name: 'White Sneakers',
+                quantity: 20,
+                category: 'Footwear',
+            },
+        ];
+
+        const inventoryList = document.getElementById('inventory-list');
+
+        function renderInventory(filteredInventory = products) {
+            inventoryList.innerHTML = '';
+            filteredInventory.forEach((product, index) => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td>${product.quantity}</td>
+                    <td>${product.category}</td>
+                    <td>
+                        <button class="update-btn" onclick="updateInventory(${index}, 'increase')">Increase</button>
+                        <button class="update-btn" onclick="updateInventory(${index}, 'decrease')">Decrease</button>
+                    </td>
+                `;
+                inventoryList.appendChild(row);
+            });
+        }
+
+        function updateInventory(index, action) {
+            if (action === 'increase') {
+                products[index].quantity++;
+            } else if (action === 'decrease' && products[index].quantity > 0) {
+                products[index].quantity--;
+            }
+            renderInventory();
+        }
+
+        function searchInventory() {
+            const query = document.getElementById('search-bar').value.toLowerCase();
+            const filteredInventory = products.filter(
+                (product) =>
+                    product.name.toLowerCase().includes(query) ||
+                    product.id.toLowerCase().includes(query)
+            );
+            renderInventory(filteredInventory);
+        }
+
+        // Initial render
+        renderInventory();
+    </script>
+</body>
+</html>

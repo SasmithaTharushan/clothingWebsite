@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="View and manage added products with search functionality.">
+    <title>View Added Products</title>
+    <link rel="stylesheet" href="viewproduct.css">
+</head>
+<body>
+    <div class="dashboard">
+        <div class="sidebar">
+            <div class="profile">
+                <img src="https://th.bing.com/th/id/OIP.Crq9sn3Qu3HyHwPJi2zW8QHaHa?rs=1&pid=ImgDetMain" alt="Profile">
+                <h3>Mary S.</h3>
+                <p>Product Manager</p>
+            </div>
+            <ul class="menu">
+                <li><a href="#">Dashboard</a></li>
+                <li><a href="product.html">Add Product</a></li>
+                <li><a href="#"class="active">View Products</a></li>
+                <li><a href="manageproduct.html">Manage Inventory</a></li>
+                <li><a href="refund.html">Refunds</a></li>
+                <li><a href="#">Settings</a></li>
+                <li><a href="login.html">Sign Out</a></li>
+            </ul>
+        </div>
+        <div class="content">
+            <div class="view-products-section">
+                <div class="content-header">
+                    <h2>View Added Products</h2>
+                    <input
+                        type="text"
+                        id="search-bar"
+                        placeholder="Search products by name or ID..."
+                        oninput="searchProducts()"
+                    />
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Name</th>
+                            <th>Image</th>
+                            <th>Quantity</th>
+                            <th>Category</th>
+                            <th>Subcategory</th>
+                            <th>SKU</th>
+                            <th>Description</th>
+                            <th>Discount</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="product-list">
+                        <!-- Products will be dynamically added here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Dummy products for demonstration
+        const products = [
+            {
+                id: 'P001',
+                name: 'Red Shirt',
+                image: 'https://via.placeholder.com/50',
+                quantity: 10,
+                category: 'Clothing',
+                subcategory: 'Shirts',
+                sku: 'SKU123',
+                description: 'Stylish red shirt for all occasions.',
+                discount: 15,
+            },
+            {
+                id: 'P002',
+                name: 'Blue Jeans',
+                image: 'https://via.placeholder.com/50',
+                quantity: 5,
+                category: 'Clothing',
+                subcategory: 'Jeans',
+                sku: 'SKU124',
+                description: 'Comfortable and durable blue jeans.',
+                discount: 20,
+            },
+        ];
+
+        // Load products into the table
+        const productList = document.getElementById('product-list');
+
+        function renderProducts(filteredProducts = products) {
+            productList.innerHTML = ''; // Clear existing rows
+            filteredProducts.forEach((product, index) => {
+                const row = document.createElement('tr');
+
+                row.innerHTML = `
+                    <td>${product.id}</td>
+                    <td>${product.name}</td>
+                    <td><img src="${product.image}" alt="${product.name}" class="product-image"></td>
+                    <td>${product.quantity}</td>
+                    <td>${product.category}</td>
+                    <td>${product.subcategory}</td>
+                    <td>${product.sku}</td>
+                    <td>${product.description}</td>
+                    <td>${product.discount}%</td>
+                    <td>
+                        <button class="delete-btn" onclick="deleteProduct(${index})">Delete</button>
+                    </td>
+                `;
+                productList.appendChild(row);
+            });
+        }
+
+        // Delete product function
+        function deleteProduct(index) {
+            if (confirm('Are you sure you want to delete this product?')) {
+                products.splice(index, 1); // Remove product from the array
+                renderProducts(); // Re-render the product list
+            }
+        }
+
+        // Search products function
+        function searchProducts() {
+            const query = document.getElementById('search-bar').value.toLowerCase();
+            const filteredProducts = products.filter(
+                (product) =>
+                    product.name.toLowerCase().includes(query) ||
+                    product.id.toLowerCase().includes(query)
+            );
+            renderProducts(filteredProducts);
+        }
+
+        // Initial render
+        renderProducts();
+    </script>
+</body>
+</html>
