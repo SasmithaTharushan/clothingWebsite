@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="Discover the latest trends in fashion for 
+        women and men at SA FashionStyle. Shop our wide selection of clothes, bags,
+        jewelry, and more. Elevate your style with our curated collections.">
+        <meta name="keywords" content="clothes, women, men, fashion, bags, jewelry, SA FashionStyle, latest trends, stylish clothing, accessories">
+        <meta name="author" content="SA_FashionStyle">
+        <link rel="icon" href="images/logowhite.jpg" type="image/x-icon">
+        <!-- css -->
+        <link rel="stylesheet" href="Style/productDetails.css">
+        <link rel="stylesheet" href="Style/main.css">
+        <!-- Google font -->
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+        <!-- icon -->
+        <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+        <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+        <!-- animation icon -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
+
+        <title>SA__FashionStyle</title>
+    </head>
+<body>
+    <header class="container" id="header">
+        <div class="header_top">
+              <div class="header_social">
+                <a href="https://www.instagram.com/piyarathna_tex/profilecard/?igsh=MXJrOTBjNDliMDhodA==" target="_blank">
+                    <ion-icon name="logo-instagram"></ion-icon>
+                </a>
+                <a href="https://www.facebook.com/piyarathna.tex.mg?mibextid=ZbWKwL" target="_blank">
+                    <ion-icon name="logo-facebook"></ion-icon>
+                </a>
+                <a href="https://wa.me/+94762627603" target="_blank">
+                    <ion-icon name="logo-whatsapp"></ion-icon>
+                </a>
+              </div>
+              <img src="images/logo_block.jpg" alt="page logo" id="logo">
+              <div class="header_actions">
+                <div id="display_login">
+                    <!-- <span id="user_name">Welcome</span> -->
+                    <a href="#" id="logout" onclick="logout();">
+                      <span id="signout">Sign Out</span>
+                      <ion-icon name="log-out-outline"></ion-icon>
+                    </a>
+                  </div>
+                <a href="login.html" title="Login" id="login_btn">
+                 <ion-icon name="person-circle-outline"></ion-icon>
+                </a>
+                <a href="#" class="icon-cart">
+                  <ion-icon name="cart-outline"></ion-icon>
+                  <span id="cart-counter">0</span>
+                </a>
+           </div>
+        </div>
+        <nav>
+            <menu>
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="products.html">Shop</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </menu>
+        </nav>
+    </header>
+    <main>
+        <div class="container">
+        <div class="productDetails">
+            <div class="images">
+                <img id="product_image" src="" alt="productDetails">
+            </div>
+            <div class="details">
+                <span class="category_name"></span>
+                <h2 class="product_name"></h2>
+                <h3 class="product_price"></h3>
+                <p class="product_des"></p>
+                <div class="buttons">
+                    <div class="counts">
+                          <button id="minus" class="counts_btns">-</button>
+                          <input type="number" inputmode="numeric" name="productCount" min="1" step="1" max="999"
+                           class="product_count" id="productCount" value="1">
+                          <button id="plus" class="counts_btns">+</button>
+                    </div>
+                    <button id="btn_add">Add To Cart</button>
+                </div>
+                
+            </div>
+        </div>
+        </div>
+    </main>
+    <!-- alert -->
+    <div class="toast-overlay" id="toast-overlay">
+        <div class="success-msg">
+            <div id="checkIcon" style="width: 100px; height: 100px;"></div>
+            <h4>Your item has been added to the shopping bag</h4>
+        </div>
+    </div> 
+    <!-- cart -->
+    <div class="cart-section">
+        <div class="cart-header">
+            <h2>SHOPPING CART</h2>
+            <div class="closeCart">
+                <ion-icon name="close-outline" id="closeCart"></ion-icon>
+            </div>
+        </div>
+        <div class="cart_products">
+         <!-- add cart products in js -->
+        </div>
+        <div class="cart_total">
+            <h3>Total:</h3>
+            <span id="total_price"></span>
+        </div>
+        <div class="btn_control">
+            <button class="viewCart" onclick="viewCart();">View Cart</button>
+            <button class="checkout" onclick="checkOut();">Check Out</button>
+        </div>
+    </div>
+    <footer class="footer">
+        <div class="footer-top">
+           <div class="footer-logo">
+               <img src="images/logo_block.jpg" alt="logo" width="140">
+               <p>The customer is at the heart of our unique business model, which includes design.</p>
+           </div>
+           <div class="footer-list">
+               <div class="list">
+                   <h4>SHOPPING</h4>
+                   <ul>
+                       <li><a href="#">Clothing Store</a></li>
+                       <li><a href="#">Trending Shoes</a></li>
+                       <li><a href="#">Accessories</a></li>
+                       <li><a href="#">Sale</a></li>
+                   </ul>
+               </div>
+               <div class="list">
+                   <h4>Customer Services</h4>
+                   <ul>
+                       <li><a href="#">Contact Us</a></li>
+                       <li><a href="#">Payment Methods</a></li>
+                       <li><a href="#">Delivary</a></li>
+                       <li><a href="#">Return & Exchanges</a></li>
+                   </ul>
+               </div>
+   
+           </div>
+        </div>
+       <div class="footer-bottom">
+           <p class="footer-company-name">
+               © 2024 All right reserved.
+              
+           </p>
+       </div>
+    </footer>
+    <button id="scrollBtn"><ion-icon name="arrow-up-outline" id="btn-up"></ion-icon></button>
+    <script src="JavaScript/main.js"></script>
+    <script src="JavaScript/getDetails.js"></script>
+    <script src="JavaScript/cart.js"></script>
+</body>
+</html>
