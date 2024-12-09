@@ -30,7 +30,7 @@
             <h1 class="welcome">Welcome back! Glad to see you, Again!</h1>
 
             <!-- Login form -->
-            <form id="loginForm">
+            <form action="login.php" method="POST" id="">
                 <!-- Email input -->
                 <div class="input-field">
                     <input type="email" id="email" name="email" placeholder="Enter your email" required>
@@ -42,26 +42,12 @@
                 </div>
 
                 <!-- Login button -->
-                <button type="button" class="login-button" id="loginButton">Login</button>
+                <button type="submit" class="login-button" id="loginButton">Login</button>
             </form>
         </div>
     </div>
 
     <!-- JavaScript to handle redirection -->
-    <script>
-        document.getElementById("loginButton").addEventListener("click", function () {
-            const email = document.getElementById("email").value;
-            const password = document.getElementById("password").value;
-
-            // Basic validation
-            if (email && password) {
-                // Redirect to product.html
-                window.location.href = "product.html";
-            } else {
-                alert("Please fill in both email and password.");
-            }
-        });
-    </script>
 </body>
 
 </html>

@@ -20,7 +20,7 @@
             <ul class="menu">
                 <li><a href="#">Dashboard</a></li>
                 <li><a href="#" class="active">Add Product</a></li>
-                <li><a href="viewproduct.html">View Products</a></li>
+                <li><a href="viewproduct.php">View Products</a></li>
                 <li><a href="manageproduct.html">Manage Inventory</a></li>
                 <li><a href="refund.html">Refunds</a></li>
                 <li><a href="#">Settings</a></li>
@@ -30,7 +30,7 @@
         <div class="content">
             <div class="new-product-section">
                 <h2>Add New Product</h2>
-                <form id="productForm">
+                <form id="productForm" action="product.php" method="POST" enctype="multipart/form-data">
                     <div class="form-group">
                         <label for="product-id">Product ID</label>
                         <input type="text" id="product-id" name="product-id" placeholder="Enter Product ID" required>
@@ -77,12 +77,6 @@
             </div>
         </div>
     </div>
-    <script>
-        document.getElementById("productForm").addEventListener("submit", function (e) {
-            e.preventDefault();
-            alert("Product successfully added!");
-        });
-    </script>
 </body>
 
 </html>

@@ -1,54 +1,32 @@
 <?php
-$servername = "localhost";
-$username = "root";
-$password = ""; // Empty password
-$dbname = "login_register_db"; // Ensure this database exists
+include_once "connection.php";
 
-// Create connection
-$conn = new mysqli($servername, $username, $password, $dbname);
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-// Check if form is submitted
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Get form data and sanitize inputs
-    $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
-    $password = $_POST['password'];
-    $confirm_password = $_POST['confirm_password'];
-
-    // Validate email format
-    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        echo "Invalid email format!";
-        exit();
-    }
-
-    // Validate password match
-    if ($password !== $confirm_password) {
-        echo "Passwords do not match!";
-        exit();
-    }
-
+if(isset($_POST["email"])) {
+    $email = $_POST["email"];
+    $password = $_POST["password"];
+    
     // Use prepared statements to prevent SQL injection
-    $stmt = $conn->prepare("INSERT INTO User (email, password) VALUES (?, ?)");
-    if ($stmt) {
-        $stmt->bind_param("ss", $email, $password); // 'ss' means both parameters are strings
-
-        if ($stmt->execute()) {
-            // Redirect to login page after successful registration
-            header("Location: login.php");
-            exit();
+    $sql = "INSERT INTO users (email, password) VALUES (?, ?)";
+    
+    // Prepare the statement
+    if ($stmt = mysqli_prepare($conn, $sql)) {
+        // Bind the parameters
+        mysqli_stmt_bind_param($stmt, "ss", $email, $password);
+        
+        // Execute the statement
+        if (mysqli_stmt_execute($stmt)) {
+            header("Location: login.html");
         } else {
-            echo "Error: " . $stmt->error;
+            echo "Error: " . mysqli_stmt_error($stmt);
         }
-
-        $stmt->close();
+        
+        // Close the statement
+        mysqli_stmt_close($stmt);
     } else {
-        echo "Prepared statement failed: " . $conn->error;
+        echo "Error preparing statement: " . mysqli_error($conn);
     }
+    
+    // Close the connection
+    mysqli_close($conn);
 }
-
-$conn->close();
 ?>
