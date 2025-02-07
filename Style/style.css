@@ -1,0 +1,333 @@
+/* ------------------------start slider ------------------------ */
+.slider{
+    width: 100%;
+    height: calc(100vh - 150px);
+    /* margin-top: 150px; */
+    position: relative;
+    overflow: hidden;
+}
+.slider .slide-content{
+    width: 100%;
+    height: calc(100vh - 150px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 100px;
+    position: relative;
+    display: none;
+}
+.slider .slide-content img{
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+}
+.slider .slide-content.active{
+    display: flex;
+}
+.prev:hover, .next:hover{
+    background-color:#097a6e;
+    border: 2px solid #fff;
+    color: #fff;
+}
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: 45px;
+    height: 45px;
+    padding-top: 4px;
+    margin-right: 30px;
+    margin-left: 30px;
+    color: black;
+    font-size: 16px;
+    border: 2px solid #000;
+    background-color: transparent;
+    border-radius: 50%;
+    transition: all .3s;
+}
+.next {
+    right: 0;
+}
+.prev {
+    left: 0;
+}
+.slide .text{
+    width: 500px;
+    position: absolute;
+}
+.slide .text h2{
+    font-size: 60px;
+    font-weight: 400;
+}
+.shop-btn{
+    background-color: #000;
+    color: white;
+    display: inline-block;
+    width: 150px;
+    text-align: center;
+    padding: 12px;
+    border-radius: 3px;
+    margin-top: 24px;
+    border: none;
+    transition: .3s ease-out;
+}
+.shop-btn:hover{
+    background-color: #097a6e;
+}
+/* ------------------------phone slider ------------------------ */
+.hero_for_phone{
+    display: none;
+}
+/* ------------------------- info section --------------------- */
+.information{
+    width: 100%;
+    display: flex;
+    padding: 20px;
+    background-color: #fff;
+    border-bottom: 1px solid #878787;
+}
+.info{
+    display: flex;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+}
+.info .info-icon img{
+    width: 80px;
+    margin-right: 20px;
+}
+.info .info-text h3{
+    font-size: 16px;
+    font-weight: 500;
+    color: #222222;
+    margin-bottom: 4px;
+}
+.info .info-text p{
+   color: #878787;
+   font-size: 14px;
+}
+/* --------------------- trending ---------------------*/
+.top_products{
+    width: 100%;
+    min-height: 100vh;
+}
+.top_products .container{
+    padding: 4% 8%;
+}
+.top_products .header{
+    text-align: center;
+    margin-bottom: 36px;
+}
+.top_products .header h3{
+    font-size: 38px;
+    font-weight: 500;
+    margin-bottom: 6px;
+}
+.top_products .header p{
+    font-size: 16px;
+    font-weight: 400;
+    color:rgba(17, 17, 17, 0.8)
+}
+.products{
+    display: grid;
+    gap: 20px;
+    padding: 16px;
+}
+
+.product-card {
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+.card-img{
+    position: relative;
+    overflow: hidden;
+}
+.card-img img {
+    width: 100%;
+    height: auto;
+    display: block;
+    cursor: pointer;
+    transition: all 1s linear;
+}
+.card-img:hover img {
+    transform: scale(1.1);
+}
+.card-img .addToCart {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    font-size: 20px;
+    color: #333;
+    cursor: pointer;
+    transition: all .4s;
+}
+.card-img .addToCart:hover{
+    background-color: #000000dc;
+    color: #fff;
+}
+.card-info {
+    padding: 16px 0;
+}
+
+.product-name {
+    font-size: 14px;
+    font-weight: 400;
+    color: #222;
+    margin: 0 0 8px;
+}
+
+.product-price {
+    font-size: 14px;
+    font-weight:400 ;
+    color: #696969;
+    margin: 0;
+}
+/* ------------------------ collection --------------------- */
+.collection { 
+    padding: 60px 0;
+}
+
+.collection .container {
+    width: 100%;
+    padding-inline: 30px;
+    margin-bottom: 30px;
+}
+
+.collection-list {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 30px;
+}
+
+.collection-card {
+  background-color: gray;
+  min-height: 400px;
+  padding: 40px;
+  padding-bottom: 30px;
+  display: flex;
+  flex-direction: column;
+}
+
+.collection-card .card-title {
+     margin-bottom: 12px;
+}
+
+.collection-card .card-text {
+  color: #000;
+  font-size: 16px;
+  font-weight: 600;
+  margin-block-end: auto;
+}
+
+.has-before,
+.has-after {
+  position: relative;
+  z-index: 1;
+}
+
+.has-before::before,
+.has-after::after {
+  content: "";
+  position: absolute;
+}
+.hover\:shine { 
+    overflow: hidden; 
+}
+
+.hover\:shine .has-bg-image {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  transition: 0.5s ease;
+}
+.hover\:shine:is(:hover, :focus) .has-bg-image { 
+    transform: scale(1.15); 
+}
+
+.hover\:shine::before {
+  top: 0;
+  left: -140%;
+  bottom: 0;
+  width: 100%;
+  background-image: linear-gradient(to right, transparent 50%, hsl(0, 0%, 100%, 0.3) 100%);
+  transform: skewX(-25deg);
+  transition: 0.5s ease;
+  z-index: 1;
+}
+
+.hover\:shine:is(:hover, :focus-within)::before { 
+    animation: shine 1s ease forwards; 
+}
+.btn-link {
+    color:#000;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    transition: 0.25s ease;
+}
+
+@keyframes shine {
+  0% { transform: skewX(-25deg) translateX(0); }
+  100% { transform: skewX(-25deg) translateX(250%); }
+}
+
+.has-bg-image {
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+
+/* ------------------------ news ----------------------- */
+.news{
+    width: 100%;
+    background-color: #dbd9d9bb;
+    height: 200px;
+    padding: 8%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.news .news-text h4{
+    font-size: 30px;
+    font-weight: 300;
+    margin-bottom: 8px;
+}
+.news .news-text p{
+    font-size: 16px;
+    font-weight: 400;
+    color:rgba(17, 17, 17, 0.8)
+}
+.news .Subscribe-form{
+    display: flex;
+}
+.news .Subscribe-form input{
+     width: 300px;
+     padding: 10px 20px;
+     border: none;
+     background-color: #f1f1f1;
+     color: #868686;
+}
+.news .Subscribe-form button{
+    background-color: #000;
+    color: #fff;
+    padding: 6px 20px;
+    border: none;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+
