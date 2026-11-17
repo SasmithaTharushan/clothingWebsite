@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orders | Piyarathna Tex admin</title>
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="images/logowhite.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ui.css">
+    <style>body { font-family: 'Poppins', sans-serif; margin: 0; color: #1c1c1e; }</style>
+</head>
+<body data-admin="orders">
+    <div class="admin_shell">
+        <nav class="admin_side">
+            <div class="brand">Piyarathna Tex</div>
+            <a href="admin-dashboard.html">Dashboard</a>
+            <a href="admin-products.html">Products</a>
+            <a href="admin-add-product.html">Add product</a>
+            <a href="admin-orders.html" class="active">Orders</a>
+            <a href="admin-refunds.html">Refunds</a>
+            <a href="index.html">View shop</a>
+            <a href="#" id="admin_logout">Sign out</a>
+        </nav>
+        <main class="admin_main">
+            <p class="confirm_meta">Signed in as <strong class="admin_who"></strong></p>
+            <h1>Orders</h1>
+            <table class="admin_table">
+                <thead><tr><th>Order</th><th>Customer</th><th>Items</th><th>Total</th><th>Status</th></tr></thead>
+                <tbody id="order_rows"></tbody>
+            </table>
+        </main>
+    </div>
+    <script src="JavaScript/api.js"></script>
+    <script src="JavaScript/admin.js"></script>
+</body>
+</html>

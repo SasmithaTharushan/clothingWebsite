@@ -1,65 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Profile</title>
-  <link rel="stylesheet" href="profile.css">
-  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My orders | Piyarathna Tex</title>
+    <meta name="description" content="Track your Piyarathna Tex orders and returns.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="icon" href="images/logowhite.png" type="image/x-icon">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="ui.css">
+    <style>body { font-family: 'Poppins', sans-serif; margin: 0; color: #1c1c1e; }</style>
 </head>
 <body>
-  <div class="container">
-    <!-- Left Panel (Profile Image and User Info) -->
-    <div class="left-panel">
-      <h1>Piyarathna Tex</h1>
-      <div class="image-wrapper">
-        <!-- Profile Image -->
-        <i class="fa-light fa-user profile-image"></i>
-      </div>
-      <p class="profile-name">Nipun</p>
-      <button class="edit-profile-btn">Edit Profile</button>
-      <!-- Sign Up and Help buttons -->
-      <div class="extra-buttons">
-        <a href="#" class="nav-link"><i class="fa fa-sign-out icon" aria-hidden="true"></i> Sign Out</a>
-        <a href="#" class="nav-link"><i class="fa-brands fa-hire-a-helper icon"></i> Help</a>
-      </div>
-    </div>
+    <header class="checkout_header" style="display:flex;justify-content:space-between;align-items:center">
+        <a href="index.html"><img src="images/logo_block.jpg" alt="Piyarathna Tex" width="130"></a>
+        <nav style="display:flex;gap:1rem;font-size:.9rem">
+            <a href="products.html">Shop</a>
+            <a href="admin-dashboard.html" id="admin_link" hidden>Admin</a>
+            <a href="#" id="sign_out">Sign out</a>
+        </nav>
+    </header>
 
-    <!-- Right Panel (Profile Details) -->
-    <div class="right-panel">
-      <div class="profile-header">
-        <h2>Profile Details</h2>
-        <div class="header-icons">
-          <i class="fa-solid fa-bolt icon"></i> <!-- Notification Icon -->
-          <i class="fa-solid fa-gear icon"></i> <!-- Settings Icon -->
-        </div>
-      </div>
-      
-      <div class="profile-content">
-        <div class="profile-image-section">
-          <div class="profile-image-wrapper">
-            <!-- Profile Image -->
-            <i class="fa-light fa-user profile-image"></i>
-            <div class="edit-icon">
-              <i class="fa fa-edit icon"></i>
-            </div>
-          </div>
-          <p class="profile-name">Nipun</p>
-        </div>
+    <main class="ui_page">
+        <h1>Hi, <span id="who_name">there</span></h1>
+        <p class="confirm_meta">Signed in as <span id="who_email"></span></p>
 
-        <div class="profile-info">
-          <h3>Personal Information</h3>
-          <p><strong>User ID:</strong> A001</p>
-          <p><strong>Profile:</strong> Admin</p>
+        <h2 class="section_sub">Your orders</h2>
+        <div id="orders_host"><p class="confirm_meta">Loading…</p></div>
 
-          <h3>Contact Information</h3>
-          <p><strong>Telephone:</strong> 0762627603</p>
-          <p><strong>Age:</strong> 21</p>
-        </div>
-      </div>
+        <h2 class="section_sub">Returns</h2>
+        <div id="refunds_host"></div>
+    </main>
 
-      <button class="change-password">Change Password</button>
-    </div>
-  </div>
+    <script src="JavaScript/api.js"></script>
+    <script src="JavaScript/orders.js"></script>
 </body>
 </html>

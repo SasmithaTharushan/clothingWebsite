@@ -1,167 +1,230 @@
+/* The shopping bag.
+   Guests keep their bag in localStorage; once signed in it syncs to the account,
+   so it survives switching device. Lines are keyed by product + size. */
+
+const CART_KEY = 'bag';
+const SHIPPING = 70;
+
 let cart = [];
 let products = [];
-let totalPrice = document.getElementById("total_price");
-let cartCounter = document.getElementById("cart-counter");
-let cartItemsCount = document.getElementById("cart_counts");
-const cartTextElements = document.querySelectorAll(".cart_products");
-const btnControl = document.querySelector(".btn_control");
-const cartTotal = document.querySelector(".cart_total");
+let cartUser = null;
 
-loadCart();
-getData();
-checkCart();
+const $ = (id) => document.getElementById(id);
+const cartCounter = $('cart-counter');
+const cartItemsCount = $('cart_counts');
+const cartTextElements = document.querySelectorAll('.cart_products');
+const btnControl = document.querySelector('.btn_control');
+const cartTotal = document.querySelector('.cart_total');
 
-async function getData() {
-    let response = await fetch('json/products.json');
-    let json = await response.json();
-    products = json;
+const lineKey = (id, size) => `${id}__${size || ''}`;
+
+function readLocal() {
+  try {
+    const v = JSON.parse(localStorage.getItem(CART_KEY) || '[]');
+    return Array.isArray(v) ? v : [];
+  } catch {
+    return [];
+  }
 }
-function loadCart() {
-    let storedCart = localStorage.getItem('cart');
-    if (storedCart) {
-        cart = JSON.parse(storedCart);
+
+function writeLocal() {
+  try {
+    localStorage.setItem(CART_KEY, JSON.stringify(cart));
+  } catch {
+    /* private mode — the bag just won't persist */
+  }
+}
+
+let syncTimer;
+function persist() {
+  writeLocal();
+  if (!cartUser) return;
+  clearTimeout(syncTimer);
+  syncTimer = setTimeout(() => api('/cart', { method: 'POST', body: { cart } }), 400);
+}
+
+async function initCart() {
+  cart = readLocal();
+  const [list, user] = await Promise.all([api('/products'), currentUser()]);
+  products = list.success ? list.products : [];
+  cartUser = user;
+
+  if (cartUser) {
+    const remote = await api('/cart');
+    if (remote.success) {
+      // Merge: keep the larger quantity for any line in both bags.
+      const merged = new Map(remote.cart.map((i) => [lineKey(i.productId, i.size), { ...i }]));
+      for (const i of cart) {
+        const k = lineKey(i.productId, i.size);
+        const hit = merged.get(k);
+        if (hit) hit.quantity = Math.max(hit.quantity, i.quantity);
+        else merged.set(k, { ...i });
+      }
+      const next = [...merged.values()];
+      const changed = JSON.stringify(next) !== JSON.stringify(remote.cart);
+      cart = next;
+      writeLocal();
+      if (changed) api('/cart', { method: 'POST', body: { cart } });
     }
+  }
+
+  dropMissingProducts();
+  renderCart();
 }
 
-function saveCart() {
-    localStorage.setItem('cart', JSON.stringify(cart));
+/* A product deleted by the admin shouldn't linger in anyone's bag. */
+function dropMissingProducts() {
+  if (!products.length) return;
+  const ids = new Set(products.map((p) => p.id || p._id));
+  const before = cart.length;
+  cart = cart.filter((i) => ids.has(i.productId));
+  if (cart.length !== before) persist();
 }
 
-function addToCart(productId,inputQuantity = 1) {
-    let product = products.find(p => p.id == productId);
-    if (product) {
-        let existingProduct = cart.find(p => p.id == productId);
-        if (existingProduct) {
-            existingProduct.quantity += 1;
-        } else {
-            let productWithQuantity = { ...product, quantity: inputQuantity };
-            cart.push(productWithQuantity);
-        }
-        saveCart();
-        checkCart();
-    }
+const findProduct = (id) => products.find((p) => (p.id || p._id) === id);
+
+function stockFor(product, size) {
+  if (!product?.sizes?.length) return Infinity;
+  return product.sizes.find((s) => s.size === size)?.stock ?? 0;
 }
 
-function addCartToHTML() {
-    let content = ``;
-    cart.forEach((product, index) => {
-        let price = parseFloat(product.price.replace('$', ''));
-        let totalPrice = price * product.quantity;
-        content += `
-        <div class="cart_product">
-            <div class="cart_product_img">  
-                <img src=${product.images[0]}>
-            </div>
-            <div class="cart_product_info">  
-                <div class="top_card">
-                    <div class="left_card">
-                        <h4 class="product_name">${product.name}</h4>
-                        <span class="product_price">${product.price}</span>
-                    </div>
-                    <div class="remove_product" onclick="removeFromCart(${index})">
-                        <ion-icon name="close-outline"></ion-icon>
-                    </div>
-                </div>
-                <div class="buttom_card">
-                    <div class="counts">
-                        <button class="counts_btns minus"  onclick="decreaseQuantity(${index})">-</button>
-                        <input type="number" inputmode="numeric" name="productCount" min="1" step="1" max="999"
-                            class="product_count"  value=${product.quantity}>
-                        <button  class="counts_btns plus" onclick="increaseQuantity(${index})">+</button>
-                    </div>
-                    <span class="total_price">$${totalPrice}.00</span>
-                </div>
-            </div>
-        </div>`;
-    });
-    cartTextElements.forEach(element => {
-        element.innerHTML = content;
-    });;
+function addToCart(productId, size, quantity = 1) {
+  const product = findProduct(productId);
+  if (!product) return;
+
+  if (product.sizes?.length && !size) {
+    notify('Please choose a size first', 'error');
+    return false;
+  }
+  const line = cart.find((i) => i.productId === productId && i.size === size);
+  const already = line?.quantity || 0;
+  const available = stockFor(product, size);
+
+  if (already + quantity > available) {
+    notify(available === 0 ? 'That size is sold out' : `Only ${available} left in that size`, 'error');
+    return false;
+  }
+  if (line) line.quantity += quantity;
+  else cart.push({ productId, size: size || '', quantity });
+
+  persist();
+  renderCart();
+  return true;
 }
 
 function removeFromCart(index) {
-    cart.splice(index, 1);
-    saveCart();
-    checkCart();
-}
-function increaseQuantity(index){
-    cart[index].quantity += 1;
-    saveCart();
-    checkCart();
-}
-function decreaseQuantity(index) {
-    if (cart[index].quantity > 1) {
-        cart[index].quantity -= 1;
-        saveCart();
-        checkCart();
-    } else {
-        removeFromCart(index);
-    }
+  cart.splice(index, 1);
+  persist();
+  renderCart();
 }
 
-function updateTotalPrice() {
-    let total = cart.reduce((sum, product) => {
-        let price = parseFloat(product.price.replace('$', ''));
-        return sum + (price * product.quantity);
-    }, 0);
-    totalPrice.innerHTML = `$${total.toFixed(2)}`;
-    localStorage.setItem("total price" , total + 70);
-    return total;
+function changeQuantity(index, delta) {
+  const line = cart[index];
+  if (!line) return;
+  const next = line.quantity + delta;
+  if (next < 1) return removeFromCart(index);
+
+  const available = stockFor(findProduct(line.productId), line.size);
+  if (next > available) return notify(`Only ${available} left in that size`, 'error');
+
+  line.quantity = next;
+  persist();
+  renderCart();
 }
 
-// Initial call to display the cart products on page load
-function checkCart(){
-    if (cart.length == 0) {
-        cartTextElements.forEach(element => {
-            element.classList.add("empty");
-            element.innerHTML = "Your cart is empty";
-        })
-        cartCounter.innerHTML = 0;
-        btnControl.style.display = "none";
-        cartTotal.style.display = "none";
-        checkCartPage(0,0);
-    } else {
-        cartTextElements.forEach(element => {
-            element.classList.remove("empty");
-        })
-        addCartToHTML();
-        let totalQuantity = cart.reduce((sum, product) => sum + product.quantity, 0);
-        cartCounter.innerHTML = totalQuantity;
-        btnControl.style.display = "flex";
-        cartTotal.style.display = "flex";
-        let total = updateTotalPrice();
-        checkCartPage(total,totalQuantity);       
-    }
+function cartLines() {
+  return cart
+    .map((i) => {
+      const p = findProduct(i.productId);
+      return p ? { ...i, product: p } : null;
+    })
+    .filter(Boolean);
 }
-// Add cart page not cart section
-function checkCartPage(total,totalQuantity){
-    if (window.location.pathname.includes("cartPage.html")) {
-        if (cart.length == 0) {
-            cartItemsCount.innerHTML = `(0 items)`;
-            document.getElementById("Subtotal").innerHTML = `$0.00`;
-            document.getElementById("total_order").innerHTML = `$0.00`;
-        }
-        else{
-            cartItemsCount.innerHTML = `(${totalQuantity} items)`;
-            displayInCartPage(total);
-        }
-    }
+
+const cartSubtotal = () =>
+  Math.round(cartLines().reduce((s, l) => s + l.product.price * l.quantity, 0) * 100) / 100;
+
+function renderCart() {
+  const lines = cartLines();
+  const count = lines.reduce((s, l) => s + l.quantity, 0);
+  if (cartCounter) cartCounter.textContent = count;
+
+  if (!lines.length) {
+    cartTextElements.forEach((el) => {
+      el.classList.add('empty');
+      el.innerHTML = 'Your bag is empty';
+    });
+    if (btnControl) btnControl.style.display = 'none';
+    if (cartTotal) cartTotal.style.display = 'none';
+  } else {
+    cartTextElements.forEach((el) => el.classList.remove('empty'));
+    drawLines(lines);
+    if (btnControl) btnControl.style.display = 'flex';
+    if (cartTotal) cartTotal.style.display = 'flex';
+  }
+
+  const subtotal = cartSubtotal();
+  const totalPrice = $('total_price');
+  if (totalPrice) totalPrice.textContent = money(subtotal);
+  updateCartPage(subtotal, count);
 }
-function displayInCartPage(total){
-    let subTotal = document.getElementById("Subtotal");
-    subTotal.innerHTML = `$${total.toFixed(2)}`;
-    let totalOrder= parseFloat(subTotal.innerHTML.replace('$', '')) + 70;
-    document.getElementById("total_order").innerHTML = `$${totalOrder.toFixed(2)}`;
+
+function drawLines(lines) {
+  const html = lines
+    .map(
+      (l, index) => `
+      <div class="cart_product">
+          <div class="cart_product_img">
+              <img src="${escapeHtml(l.product.images[0])}" alt="${escapeHtml(l.product.name)}">
+          </div>
+          <div class="cart_product_info">
+              <div class="top_card">
+                  <div class="left_card">
+                      <h4 class="product_name">${escapeHtml(l.product.name)}</h4>
+                      <span class="product_price">${money(l.product.price)}</span>
+                      ${l.size ? `<span class="product_size">Size: ${escapeHtml(l.size)}</span>` : ''}
+                  </div>
+                  <button class="remove_product" aria-label="Remove ${escapeHtml(l.product.name)}" onclick="removeFromCart(${index})">
+                      <ion-icon name="close-outline"></ion-icon>
+                  </button>
+              </div>
+              <div class="buttom_card">
+                  <div class="counts">
+                      <button class="counts_btns minus" aria-label="Decrease quantity" onclick="changeQuantity(${index}, -1)">-</button>
+                      <span class="product_count">${l.quantity}</span>
+                      <button class="counts_btns plus" aria-label="Increase quantity" onclick="changeQuantity(${index}, 1)">+</button>
+                  </div>
+                  <span class="total_price">${money(l.product.price * l.quantity)}</span>
+              </div>
+          </div>
+      </div>`
+    )
+    .join('');
+  cartTextElements.forEach((el) => (el.innerHTML = html));
 }
-function checkOut(){
-    let email = localStorage.getItem('email');
-    let password = localStorage.getItem('password');
-    if (cart.length != 0) {
-        if(email && password){
-          window.location.href = "checkout.html";
-        }
-        else {
-          window.location.href = "login.html";
-        }
-     }
+
+/* The dedicated bag page has its own summary panel. */
+function updateCartPage(subtotal, count) {
+  if (!cartItemsCount) return;
+  cartItemsCount.textContent = `(${count} item${count === 1 ? '' : 's'})`;
+  const sub = $('Subtotal');
+  const total = $('total_order');
+  const delivery = $('Delivery');
+  const shipping = count ? SHIPPING : 0;
+  if (sub) sub.textContent = money(subtotal);
+  if (delivery) delivery.textContent = money(shipping);
+  if (total) total.textContent = money(subtotal + shipping);
 }
+
+async function checkOut() {
+  if (!cartLines().length) return notify('Your bag is empty', 'error');
+  const user = await currentUser();
+  if (!user) {
+    notify('Please log in to check out');
+    location.href = 'login.html?next=checkout.html';
+    return;
+  }
+  location.href = 'checkout.html';
+}
+
+document.addEventListener('DOMContentLoaded', initCart);

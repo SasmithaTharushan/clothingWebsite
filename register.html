@@ -3,34 +3,39 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Register</title>
+  <title>Register | Piyarathna Tex</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Create a Piyarathna Tex account.">
   <link rel="stylesheet" href="register.css">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Piyarathna Tex">
+    <meta property="og:title" content="Register | Piyarathna Tex">
+    <meta property="og:description" content="Create a Piyarathna Tex account.">
+    <meta property="og:image" content="images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="ui.css">
 </head>
-<body>
+<body data-auth="register">
   <div class="container">
     <div class="left-panel">
       <h1>Piyarathna Tex</h1>
       <div class="image-wrapper">
-        <img src="https://via.placeholder.com/400x600" alt="Fashionable Woman" />
+        <img src="images/woman/image76.webp" alt="" />
       </div>
     </div>
     <div class="right-panel">
       <h2>Hello! Register to get started</h2>
       <!-- Form with action pointing to register.php for handling data submission -->
-      <form action="register.php" method="POST">
-        <input type="email" name="email" placeholder="Email" required />
-        <input type="password" name="password" placeholder="Password" required />
-        <input type="password" name="confirm_password" placeholder="Confirm password" required />
+      <form id="registerForm" novalidate>
+        <input type="email" id="email" name="email" placeholder="Email" autocomplete="email" required />
+        <input type="password" id="password" name="password" placeholder="Password (8+ chars, with a number)" autocomplete="new-password" minlength="8" required />
+        <input type="password" id="confirmPassword" name="confirm_password" placeholder="Confirm password" autocomplete="new-password" required />
         <button type="submit">Register</button>
-        <p>Or login with</p>
-        <div class="social-login">
-          <button type="button">Google</button>
-          <button type="button">Facebook</button>
-          <button type="button">Apple</button>
-        </div>
         <p>Already have an account? <a href="login.html">Login</a></p>
       </form>
     </div>
   </div>
+    <script src="JavaScript/api.js"></script>
+    <script src="JavaScript/auth.js"></script>
 </body>
 </html>
