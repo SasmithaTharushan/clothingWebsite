@@ -4,6 +4,7 @@ import { authUser, authAdmin } from '../middleware/auth.js';
 import * as user from '../controllers/userController.js';
 import * as product from '../controllers/productController.js';
 import * as order from '../controllers/orderController.js';
+import { bootstrap } from '../controllers/bootstrapController.js';
 
 // Vercel caps request bodies near 4.5 MB, so the admin UI shrinks images first.
 const upload = multer({
@@ -13,6 +14,9 @@ const upload = multer({
 });
 
 const r = Router();
+
+// First-run setup (refuses once an admin exists)
+r.post('/bootstrap', bootstrap);
 
 // Auth
 r.post('/auth/register', user.register);
