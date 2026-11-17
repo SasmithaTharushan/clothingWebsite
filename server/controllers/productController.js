@@ -4,13 +4,17 @@ import { uploadBuffer, isCloudinaryReady } from '../config/cloudinary.js';
 
 export const CATEGORIES = ['Woman', 'Man', 'Accessories', 'Jewelry', 'Bags'];
 
+// `.lean()` skips Mongoose virtuals, so derive inStock here instead.
+const withStockFlag = (p) => ({ ...p, inStock: !p.sizes?.length || p.sizes.some((s) => s.stock > 0) });
+
 // GET /api/products?category=&q=
 export async function list(req, res) {
   const filter = {};
   if (req.query.category && CATEGORIES.includes(req.query.category)) filter.category = req.query.category;
   if (req.query.q) filter.name = { $regex: String(req.query.q).slice(0, 60), $options: 'i' };
 
-  const products = await Product.find(filter).sort({ createdAt: 1 }).lean({ virtuals: true });
+  const rows = await Product.find(filter).sort({ createdAt: 1 }).lean();
+  const products = rows.map(withStockFlag);
   // Stock and prices change from the admin panel, so never let a CDN hold this.
   res.set('Cache-Control', 'no-store');
   res.json({ success: true, products });
@@ -21,8 +25,9 @@ export async function byId(req, res) {
   if (!mongoose.isValidObjectId(req.params.id)) {
     return res.status(404).json({ success: false, message: 'Product not found' });
   }
-  const product = await Product.findById(req.params.id).lean({ virtuals: true });
-  if (!product) return res.status(404).json({ success: false, message: 'Product not found' });
+  const row = await Product.findById(req.params.id).lean();
+  if (!row) return res.status(404).json({ success: false, message: 'Product not found' });
+  const product = withStockFlag(row);
   res.set('Cache-Control', 'no-store');
   res.json({ success: true, product });
 }

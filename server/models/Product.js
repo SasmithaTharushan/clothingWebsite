@@ -19,9 +19,4 @@ const productSchema = new mongoose.Schema(
   { timestamps: true }
 );
 
-productSchema.virtual('inStock').get(function () {
-  return this.sizes.some((s) => s.stock > 0);
-});
-productSchema.set('toJSON', { virtuals: true });
-
 export default mongoose.models.Product || mongoose.model('Product', productSchema);
