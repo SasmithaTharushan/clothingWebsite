@@ -4,29 +4,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create New Password</title>
+    <title>Choose a new password | Piyarathna Tex</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Set a new password for your account.">
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet" />
     <link href="newpass.css" rel="stylesheet" />
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Piyarathna Tex">
+    <meta property="og:title" content="Choose a new password | Piyarathna Tex">
+    <meta property="og:description" content="Set a new password for your account.">
+    <meta property="og:image" content="images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="ui.css">
 </head>
 
-<body>
+<body data-auth="newpass">
     <div class="container">
         <div class="content">
             <h1 class="heading">Create New Password</h1>
             <p class="subheading">Your new password must be unique from those previously used.</p>
 
-            <form class="password-form">
+            <form class="password-form" id="newPassForm" novalidate>
                 <!-- New Password Input -->
                 <div class="input-field">
-                    <label for="new-password" class="input-label">New Password</label>
-                    <input type="password" id="new-password" placeholder="Enter your new password" required>
+                    <label for="password" class="input-label">New Password</label>
+                    <input type="password" id="password" placeholder="At least 8 characters, with a number" autocomplete="new-password" minlength="8" required>
                 </div>
 
                 <!-- Confirm Password Input -->
                 <div class="input-field">
-                    <label for="confirm-password" class="input-label">Confirm Password</label>
-                    <input type="password" id="confirm-password" placeholder="Confirm your new password" required>
+                    <label for="confirmPassword" class="input-label">Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm your new password" autocomplete="new-password" required>
                 </div>
 
                 <!-- Reset Button -->
@@ -38,6 +47,8 @@
             </div>
         </div>
     </div>
+    <script src="JavaScript/api.js"></script>
+    <script src="JavaScript/auth.js"></script>
 </body>
 
 </html>

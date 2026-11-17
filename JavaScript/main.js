@@ -1,16 +1,15 @@
+const scrollBtn = document.getElementById("scrollBtn");
+
 window.onscroll = function() {scrollFunction()};
 
 function scrollFunction() {
-    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
-        document.getElementById("scrollBtn").style.display = "block";
-    } else {
-        document.getElementById("scrollBtn").style.display = "none";
-    }
+    if (!scrollBtn) return;
+    const scrolled = document.body.scrollTop > 20 || document.documentElement.scrollTop > 20;
+    scrollBtn.style.display = scrolled ? "block" : "none";
 }
 
-document.getElementById("scrollBtn").addEventListener("click", function() {
-    document.body.scrollTop = 0; 
-    document.documentElement.scrollTop = 0; 
+scrollBtn?.addEventListener("click", function() {
+    window.scrollTo({ top: 0, behavior: "smooth" });
 });
 
 // nav 
@@ -26,6 +25,7 @@ if (window.addEventListener) {
 }
 
 function scrollHandler() {
+     if (!nav) return;
      var currentScroll = window.pageYOffset;
      if (currentScroll === 0) {
          nav.classList.remove(scrollDown);
@@ -50,10 +50,10 @@ let closeCart = document.querySelector('.closeCart');
 let iconCart = document.querySelector('.icon-cart');
 let body = document.querySelector('body');
 
-iconCart.addEventListener('click', () => {
+iconCart?.addEventListener('click', () => {
     body.classList.toggle('showCart');
 })
-closeCart.addEventListener('click', () => {
+closeCart?.addEventListener('click', () => {
     body.classList.toggle('showCart');
 })
 
@@ -61,23 +61,33 @@ function viewCart(){
     window.location.href = "cartPage.html"
 }
 
-function setupUI() {
-    let logout = document.getElementById("display_login");
-    let login = document.getElementById("login_btn");
-    let token = localStorage.getItem("email");
+/* Header auth state comes from the session cookie, not localStorage. */
+async function setupUI() {
+    const logoutBox = document.getElementById("display_login");
+    const loginBtn = document.getElementById("login_btn");
+    const nameEl = document.getElementById("user_name");
+    if (!logoutBox && !loginBtn) return;
 
-    if (token) {
-        logout.style.display = "flex";
-        login.style.display = "none";
+    const user = await currentUser();
+    if (user) {
+        if (logoutBox) logoutBox.style.display = "flex";
+        if (loginBtn) loginBtn.style.display = "none";
+        if (nameEl) nameEl.textContent = user.name ? user.name.split(" ")[0] : user.email;
+        document.querySelectorAll(".admin_only").forEach((el) => {
+            el.style.display = user.role === "admin" ? "" : "none";
+        });
     } else {
-        logout.style.display = "none";
-        login.style.display = "inline-block";
+        if (logoutBox) logoutBox.style.display = "none";
+        if (loginBtn) loginBtn.style.display = "inline-block";
+        document.querySelectorAll(".admin_only").forEach((el) => (el.style.display = "none"));
     }
 }
 
-function logout(){
-    localStorage.removeItem("email");
-    localStorage.removeItem("password");
-    setupUI();
+async function logout(e) {
+    e?.preventDefault();
+    await api('/auth/logout', { method: 'POST' });
+    try { localStorage.removeItem('bag'); } catch { /* ignore */ }
+    location.href = "index.html";
 }
-setupUI();
+
+document.addEventListener("DOMContentLoaded", setupUI);

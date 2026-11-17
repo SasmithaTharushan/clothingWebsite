@@ -3,12 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Discover the latest trends in fashion for 
-        women and men at SA FashionStyle. Shop our wide selection of clothes, bags,
-        jewelry, and more. Elevate your style with our curated collections.">
+        <meta name="description" content="View product details, sizes and availability at Piyarathna Tex.">
         <meta name="keywords" content="clothes, women, men, fashion, bags, jewelry, SA FashionStyle, latest trends, stylish clothing, accessories">
         <meta name="author" content="SA_FashionStyle">
-        <link rel="icon" href="images/logowhite.jpg" type="image/x-icon">
+        <link rel="icon" href="images/logowhite.png" type="image/x-icon">
         <!-- css -->
         <link rel="stylesheet" href="Style/productDetails.css">
         <link rel="stylesheet" href="Style/main.css">
@@ -23,8 +21,15 @@
         <!-- animation icon -->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
 
-        <title>piyarathana</title>
-    </head>
+        <title>Product | Piyarathna Tex</title>
+        <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Piyarathna Tex">
+    <meta property="og:title" content="Product | Piyarathna Tex">
+    <meta property="og:description" content="View product details, sizes and availability at Piyarathna Tex.">
+    <meta property="og:image" content="images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="ui.css">
+</head>
 <body>
     <header class="container" id="header">
         <div class="header_top">
@@ -71,13 +76,21 @@
         <div class="container">
         <div class="productDetails">
             <div class="images">
-                <img id="product_image" src="" alt="productDetails">
+                <img id="product_image" src="" alt="">
+                <div class="thumbs"></div>
             </div>
             <div class="details">
                 <span class="category_name"></span>
                 <h2 class="product_name"></h2>
                 <h3 class="product_price"></h3>
                 <p class="product_des"></p>
+
+                <div class="size_picker">
+                    <h4>Select size</h4>
+                    <div class="size_options"></div>
+                    <span id="stock_note"></span>
+                </div>
+
                 <div class="buttons">
                     <div class="counts">
                           <button id="minus" class="counts_btns">-</button>
@@ -155,6 +168,7 @@
        </div>
     </footer>
     <button id="scrollBtn"><ion-icon name="arrow-up-outline" id="btn-up"></ion-icon></button>
+    <script src="JavaScript/api.js"></script>
     <script src="JavaScript/main.js"></script>
     <script src="JavaScript/getDetails.js"></script>
     <script src="JavaScript/cart.js"></script>

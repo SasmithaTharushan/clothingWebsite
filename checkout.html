@@ -3,35 +3,113 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Discover the latest trends in fashion for 
-    women and men at SA FashionStyle. Shop our wide selection of clothes, bags,
-    jewelry, and more. Elevate your style with our curated collections.">
+    <meta name="description" content="Complete your order.">
     <meta name="keywords" content="clothes, women, men, fashion, bags, jewelry, SA FashionStyle, latest trends, stylish clothing, accessories">
     <meta name="author" content="Piyarathna Tex">
-    <link rel="icon" href="images/logowhite.jpg" type="image/x-icon">
+    <link rel="icon" href="images/logowhite.png" type="image/x-icon">
     <!-- Google font -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,100..700;1,100..700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
      <!-- css  -->
     <link rel="stylesheet" href="Style/checkout.css">
+    <link rel="stylesheet" href="Style/main.css">
      <!-- animation icon -->
      <script src="https://cdnjs.cloudflare.com/ajax/libs/bodymovin/5.7.6/lottie.min.js"></script>
-     <title>oiyarathana</title>
+     <title>Checkout | Piyarathna Tex</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Piyarathna Tex">
+    <meta property="og:title" content="Checkout | Piyarathna Tex">
+    <meta property="og:description" content="Complete your order.">
+    <meta property="og:image" content="images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="ui.css">
 </head>
 <body>
-    <div class="checkout" id="checkout-overlay">
-         <div class="checkout-container">
-            <div id="checkoutIcon" style="width: 200px; height: 200px;"></div>
-            <h4>thank you. your order has been received</h4>
-            <div>
-                <span>order:</span> <span id="id_order">1</span>
-                <span>total:</span> <span id="total_price"> $ 124.05</span>
-                <span>date:</span> <span id="order_date"></span>
-            </div>
-            <button id="back_btn" onclick="backHome();">back to home</button>
-         </div>
-    </div> 
+    <header class="checkout_header">
+        <a href="index.html"><img src="images/logo_block.jpg" alt="Piyarathna Tex" width="130"></a>
+    </header>
+
+    <!-- Step 1: delivery details -->
+    <main class="ui_page" id="checkout_step">
+        <h1>Checkout</h1>
+        <div class="checkout_grid">
+            <form id="checkoutForm" novalidate>
+                <h2 class="section_sub">Delivery details</h2>
+
+                <div class="ui_field">
+                    <label for="fullName">Full name</label>
+                    <input id="fullName" name="fullName" type="text" autocomplete="name" required>
+                </div>
+                <div class="ui_row">
+                    <div class="ui_field">
+                        <label for="email">Email</label>
+                        <input id="email" name="email" type="email" autocomplete="email" required>
+                    </div>
+                    <div class="ui_field">
+                        <label for="phone">Phone</label>
+                        <input id="phone" name="phone" type="tel" autocomplete="tel" required>
+                    </div>
+                </div>
+                <div class="ui_field">
+                    <label for="street">Street address</label>
+                    <input id="street" name="street" type="text" autocomplete="street-address" required>
+                </div>
+                <div class="ui_row">
+                    <div class="ui_field">
+                        <label for="city">City</label>
+                        <input id="city" name="city" type="text" autocomplete="address-level2" required>
+                    </div>
+                    <div class="ui_field">
+                        <label for="postcode">Postcode</label>
+                        <input id="postcode" name="postcode" type="text" autocomplete="postal-code" required>
+                    </div>
+                </div>
+                <div class="ui_field">
+                    <label for="country">Country</label>
+                    <input id="country" name="country" type="text" autocomplete="country-name" value="Sri Lanka" required>
+                </div>
+
+                <h2 class="section_sub">Payment</h2>
+                <p class="confirm_meta">Cash on delivery. You pay the courier when your order arrives.</p>
+
+                <button type="submit" class="btn_primary" id="place_order">Place order</button>
+            </form>
+
+            <aside class="summary_card">
+                <h2 class="section_sub">Your order</h2>
+                <div id="summary_lines"></div>
+                <div class="summary_totals">
+                    <div><span>Subtotal</span><span id="sum_subtotal">—</span></div>
+                    <div><span>Delivery</span><span id="sum_shipping">—</span></div>
+                    <div class="grand"><span>Total</span><span id="sum_total">—</span></div>
+                </div>
+                <p class="confirm_meta" style="margin-top:1rem">
+                    <a href="cartPage.html">Edit your bag</a>
+                </p>
+            </aside>
+        </div>
+    </main>
+
+    <!-- Step 2: confirmation, shown once the order is placed -->
+    <main class="ui_page confirm_panel" id="confirm_step" hidden>
+        <div id="checkoutIcon" style="width:200px;height:200px;margin:0 auto"></div>
+        <h1>Thank you — your order is in</h1>
+        <p class="confirm_meta">
+            Order <strong id="order_no"></strong> &middot;
+            Total <strong id="order_total"></strong> &middot;
+            <span id="order_date"></span>
+        </p>
+        <p class="confirm_meta">We&rsquo;ll email you when it ships. You can track it from your account.</p>
+        <p>
+            <a class="btn_primary" href="profile.html">View my orders</a>
+            <button class="btn_ghost" id="back_btn" onclick="backHome();">Back to home</button>
+        </p>
+    </main>
+
+    <script src="JavaScript/api.js"></script>
+    <script src="JavaScript/cart.js"></script>
     <script src="JavaScript/checkout.js"></script>
 </body>
 </html>

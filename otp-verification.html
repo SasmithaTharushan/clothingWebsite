@@ -3,10 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>OTP Verification</title>
+  <title>Enter your code | Piyarathna Tex</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Enter the six-digit code we sent you.">
   <link rel="stylesheet" href="otp-verification.css">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Piyarathna Tex">
+    <meta property="og:title" content="Enter your code | Piyarathna Tex">
+    <meta property="og:description" content="Enter the six-digit code we sent you.">
+    <meta property="og:image" content="images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="ui.css">
 </head>
-<body>
+<body data-auth="otp">
   <div class="container">
     <!-- Left Panel -->
     <div class="left-panel">
@@ -19,20 +28,25 @@
     <!-- Right Panel -->
     <div class="right-panel">
       <h2>Verification</h2>
-      <p>We sent an OTP code to your mobile number. Enter the verification code below.</p>
-      <form>
-        <div class="otp-inputs">
-          <input type="text" maxlength="1" required>
-          <input type="text" maxlength="1" required>
-          <input type="text" maxlength="1" required>
-          <input type="text" maxlength="1" required>
+      <p>We sent a six-digit code to <strong id="reset_target"></strong>. Enter it below.</p>
+      <p id="demo_hint" class="demo_hint" hidden></p>
+      <form id="otpForm" novalidate>
+        <div class="otp-inputs otp_row">
+          <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 1" required>
+          <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 2" required>
+          <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 3" required>
+          <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 4" required>
+          <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 5" required>
+          <input class="otp-input" type="text" inputmode="numeric" maxlength="1" aria-label="Digit 6" required>
         </div>
         <button type="submit">Verify</button>
       </form>
       <p class="resend-code">
-        Didn’t receive the code? <a href="#">Resend</a>
+        Didn’t receive the code? <a href="#" id="resend">Resend</a>
       </p>
     </div>
   </div>
+    <script src="JavaScript/api.js"></script>
+    <script src="JavaScript/auth.js"></script>
 </body>
 </html>

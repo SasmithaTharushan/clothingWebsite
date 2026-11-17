@@ -4,14 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forgot Password</title>
+    <title>Reset your password | Piyarathna Tex</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Request a code to reset your password.">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap" rel="stylesheet" />
     <link href="forgotPass.css" rel="stylesheet" />
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Piyarathna Tex">
+    <meta property="og:title" content="Reset your password | Piyarathna Tex">
+    <meta property="og:description" content="Request a code to reset your password.">
+    <meta property="og:image" content="images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="ui.css">
 </head>
 
-<body>
+<body data-auth="forgot">
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">
@@ -24,18 +33,14 @@
             <h1 class="forgot-password-heading">Forgot your password?</h1>
 
             <!-- Instructions -->
-            <p class="forgot-password-instruction">Don’t worry, it happens! Just enter your email below, and we’ll send you a link to reset your password.</p>
+            <p class="forgot-password-instruction">Don’t worry, it happens! Just enter your email below, and we’ll send you a six-digit code to reset your password.</p>
 
-            <!-- Email input -->
-            <div class="input-field">
-                <input type="email" placeholder="Enter your email" aria-label="Email" id="email">
-            </div>
-
-            <!-- Send reset link button -->
-            <button class="send-reset-button" onclick="sendResetLink()">Send Reset Link</button>
-
-            <!-- Message area for success/error -->
-            <div id="message" class="message"></div>
+            <form id="forgotForm" novalidate>
+                <div class="input-field">
+                    <input type="email" placeholder="Enter your email" aria-label="Email" id="email" autocomplete="email" required>
+                </div>
+                <button type="submit" class="send-reset-button">Send reset code</button>
+            </form>
 
             <!-- Back to login link -->
             <div class="auth-links">
@@ -43,25 +48,8 @@
             </div>
         </div>
     </div>
-
-    <script>
-        function sendResetLink() {
-            const email = document.getElementById("email").value;
-            const messageBox = document.getElementById("message");
-
-            if (email) {
-                messageBox.style.color = "green";
-                messageBox.innerHTML = "A reset link has been sent to your email.";
-            } else {
-                messageBox.style.color = "red";
-                messageBox.innerHTML = "Please enter a valid email address.";
-            }
-             // Redirect to redirect.html
-             window.location.href = "redirect.html";
-        }
-        <!-- JavaScript to handle redirection -->
-    </script>
-    </script>
+    <script src="JavaScript/api.js"></script>
+    <script src="JavaScript/auth.js"></script>
 </body>
 
 </html>

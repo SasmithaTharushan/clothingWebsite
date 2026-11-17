@@ -4,14 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Log in | Piyarathna Tex</title>
+    <meta name="robots" content="noindex, nofollow">
+    <meta name="description" content="Log in to your Piyarathna Tex account.">
     <link href="https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Kaushan+Script&display=swap" rel="stylesheet" />
     <link href="login.css" rel="stylesheet" />
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Piyarathna Tex">
+    <meta property="og:title" content="Log in | Piyarathna Tex">
+    <meta property="og:description" content="Log in to your Piyarathna Tex account.">
+    <meta property="og:image" content="images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="ui.css">
 </head>
 
-<body>
+<body data-auth="login">
     <div class="container">
         <!-- Sidebar -->
         <div class="sidebar">
@@ -30,7 +39,7 @@
             <h1 class="welcome">Welcome back! Glad to see you, Again!</h1>
 
             <!-- Login form -->
-            <form action="login.php" method="POST" id="">
+            <form id="loginForm" novalidate>
                 <!-- Email input -->
                 <div class="input-field">
                     <input type="email" id="email" name="email" placeholder="Enter your email" required>
@@ -47,7 +56,9 @@
         </div>
     </div>
 
-    <!-- JavaScript to handle redirection -->
+    
+    <script src="JavaScript/api.js"></script>
+    <script src="JavaScript/auth.js"></script>
 </body>
 
 </html>

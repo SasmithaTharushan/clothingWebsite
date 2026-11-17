@@ -3,12 +3,10 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <meta name="description" content="Discover the latest trends in fashion for 
-        women and men at SA FashionStyle. Shop our wide selection of clothes, bags,
-        jewelry, and more. Elevate your style with our curated collections.">
+        <meta name="description" content="Create a Piyarathna Tex account to track orders and check out faster.">
         <meta name="keywords" content="clothes, women, men, fashion, bags, jewelry, Priyantha Tex, latest trends, stylish clothing, accessories">
         <meta name="author" content="SA_FashionStyle">
-        <link rel="icon" href="images/logowhite.jpg" type="image/x-icon">
+        <link rel="icon" href="images/logowhite.png" type="image/x-icon">
         <link rel="stylesheet" href="Style/main.css">
         <link rel="stylesheet" href="Style/login.css">
         <!-- Google font -->
@@ -18,9 +16,17 @@
         <!-- icon -->
         <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
         <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-        <title>piyarathana</title>
-    </head>
-<body>
+        <title>Create an account | Piyarathna Tex</title>
+    <meta name="robots" content="noindex, nofollow">
+        <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Piyarathna Tex">
+    <meta property="og:title" content="Create an account | Piyarathna Tex">
+    <meta property="og:description" content="Create a Piyarathna Tex account to track orders and check out faster.">
+    <meta property="og:image" content="images/og-image.png">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="stylesheet" href="ui.css">
+</head>
+<body data-auth="register">
     <header class="container" id="header">
         <div class="header_top">
               <div class="header_social">
@@ -39,7 +45,7 @@
                    <a href="login.html">
                     <ion-icon name="person-circle-outline"></ion-icon>
                    </a>
-                   <a href="cart.html">
+                   <a href="cartPage.html">
                      <ion-icon name="cart-outline"></ion-icon>
                      <span id="cart-counter">0</span>
                    </a>
@@ -58,16 +64,17 @@
     <section id="login">
        <div class="container">
         <h1 class="section-header">Create account</h1>
-        <div id="form">
-            <input type="text" name="fname" placeholder="First Name" id="fname">
-            <input type="text" name="lname" placeholder="Last Name" id="lname">
-            <input type="text" name="email" placeholder="Email" id="email">
-            <input type="password" name="Password" placeholder="Password" id="password">
+        <form id="registerForm" novalidate>
+            <input type="text" name="fname" placeholder="First Name" id="fname" autocomplete="given-name">
+            <input type="text" name="lname" placeholder="Last Name" id="lname" autocomplete="family-name">
+            <input type="email" name="email" placeholder="Email" id="email" autocomplete="email" required>
+            <input type="password" name="password" placeholder="Password (8+ chars, with a number)" id="password" autocomplete="new-password" minlength="8" required>
+            <input type="password" name="confirmPassword" placeholder="Confirm password" id="confirmPassword" autocomplete="new-password" required>
             <div class="submit">
-                <button id="btn-login">Create</button> 
+                <button type="submit" id="btn-login">Create</button>
                 <a href="index.html" id="signup">Return to store</a>
-            </div>  
-        </div>
+            </div>
+        </form>
        </div>
         
     </section>
@@ -105,5 +112,7 @@
             
        </div>
    </footer>
+    <script src="JavaScript/api.js"></script>
+    <script src="JavaScript/auth.js"></script>
 </body>
 </html>

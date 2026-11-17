@@ -1,0 +1,1084 @@
+// Starter catalogue. Images are served from the repo's images/ folder.
+const products = [
+  {
+    "legacyId": 1,
+    "name": "Retro Sunglasses",
+    "category": "Accessories",
+    "price": 225.0,
+    "images": [
+      "images/Accessories/Retro-sunglasses_03.webp"
+    ],
+    "description": "These Retro Sunglasses offer a vintage-inspired look with modern protection. Perfect for adding a stylish edge to any outfit.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 7
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 2,
+    "name": "Miley Triangle Hair Scarf",
+    "category": "Accessories",
+    "price": 22.0,
+    "images": [
+      "images/Accessories/scrf1.webp",
+      "images/Accessories/scrf2.webp",
+      "images/Accessories/scrf3.webp"
+    ],
+    "description": "The Miley Triangle Hair Scarf is a versatile accessory that can be styled in multiple ways. Made from soft, breathable fabric.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 5
+      }
+    ],
+    "isTrending": true
+  },
+  {
+    "legacyId": 3,
+    "name": "Platform Canvas Sneakers",
+    "category": "Accessories",
+    "price": 77.0,
+    "images": [
+      "images/Accessories/Platform-Canvas-Sneakers_03.webp"
+    ],
+    "description": "Platform Canvas Sneakers provide both comfort and height. Ideal for casual outings and adding a trendy touch to your look.",
+    "sizes": [
+      {
+        "size": "UK 4",
+        "stock": 3
+      },
+      {
+        "size": "UK 5",
+        "stock": 6
+      },
+      {
+        "size": "UK 6",
+        "stock": 0
+      },
+      {
+        "size": "UK 7",
+        "stock": 3
+      },
+      {
+        "size": "UK 8",
+        "stock": 6
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 4,
+    "name": "Quilted Heeled Mule Sandal",
+    "category": "Accessories",
+    "price": 128.0,
+    "images": [
+      "images/Accessories/Quilted-Heeled-Mule-Sandal_01.webp"
+    ],
+    "description": "The Quilted Heeled Mule Sandal combines elegance and comfort. Perfect for dressing up any outfit with a touch of sophistication.",
+    "sizes": [
+      {
+        "size": "UK 4",
+        "stock": 1
+      },
+      {
+        "size": "UK 5",
+        "stock": 4
+      },
+      {
+        "size": "UK 6",
+        "stock": 7
+      },
+      {
+        "size": "UK 7",
+        "stock": 1
+      },
+      {
+        "size": "UK 8",
+        "stock": 4
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 5,
+    "name": "Ultimate Relaxed Crop Top",
+    "category": "Woman",
+    "price": 22.0,
+    "images": [
+      "images/woman/relaxed-gym-tank-top_01.webp",
+      "images/woman/relaxed-gym-tank-top_04.webp"
+    ],
+    "description": "A relaxed sleeveless crop top in soft stretch jersey. Cut to skim the body with a cropped hem that pairs easily with high-waisted leggings or denim.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 8
+      },
+      {
+        "size": "S",
+        "stock": 2
+      },
+      {
+        "size": "M",
+        "stock": 5
+      },
+      {
+        "size": "L",
+        "stock": 8
+      },
+      {
+        "size": "XL",
+        "stock": 2
+      }
+    ],
+    "isTrending": true
+  },
+  {
+    "legacyId": 6,
+    "name": "Adilette Slide Sandal",
+    "category": "Accessories",
+    "price": 85.0,
+    "images": [
+      "images/Accessories/Adilette-Slide-Sandal_01.webp",
+      "images/Accessories/Adilette-Slide-Sandal_color_01.webp"
+    ],
+    "description": "Adilette Slide Sandals are perfect for casual wear. They feature a comfortable footbed and easy slip-on design.",
+    "sizes": [
+      {
+        "size": "UK 4",
+        "stock": 6
+      },
+      {
+        "size": "UK 5",
+        "stock": 0
+      },
+      {
+        "size": "UK 6",
+        "stock": 3
+      },
+      {
+        "size": "UK 7",
+        "stock": 6
+      },
+      {
+        "size": "UK 8",
+        "stock": 0
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 7,
+    "name": "Pieces Short Sleeve Sweater",
+    "category": "Woman",
+    "price": 100.0,
+    "images": [
+      "images/woman/Pieces-short-sleeve-sweater_01.webp",
+      "images/woman/Pieces-short-sleeve-sweater_02.webp",
+      "images/woman/Pieces-short-sleeve-sweater_03.webp"
+    ],
+    "description": "The Pieces Short Sleeve Sweater is a cozy and stylish addition to your wardrobe. Made from soft, breathable material.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 4
+      },
+      {
+        "size": "S",
+        "stock": 7
+      },
+      {
+        "size": "M",
+        "stock": 1
+      },
+      {
+        "size": "L",
+        "stock": 4
+      },
+      {
+        "size": "XL",
+        "stock": 7
+      }
+    ],
+    "isTrending": true
+  },
+  {
+    "legacyId": 8,
+    "name": "Simona Chunky Ribbed Knit",
+    "category": "Woman",
+    "price": 89.0,
+    "images": [
+      "images/Bags/crew-neck-chunky-rib-sweater_01.webp"
+    ],
+    "description": "An oversized crew-neck jumper in a chunky rib knit. Dropped shoulders and a relaxed body make it an easy layer over everything.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 2
+      },
+      {
+        "size": "S",
+        "stock": 5
+      },
+      {
+        "size": "M",
+        "stock": 8
+      },
+      {
+        "size": "L",
+        "stock": 2
+      },
+      {
+        "size": "XL",
+        "stock": 5
+      }
+    ],
+    "isTrending": true
+  },
+  {
+    "legacyId": 9,
+    "name": "Oversized T-shirt Multi-colors",
+    "category": "Woman",
+    "price": 50.0,
+    "images": [
+      "images/woman/image68.webp",
+      "images/woman/image67.webp"
+    ],
+    "description": "The Oversized T-shirt in Multi-colors offers a relaxed fit and vibrant design. Ideal for casual and comfortable wear.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 0
+      },
+      {
+        "size": "S",
+        "stock": 3
+      },
+      {
+        "size": "M",
+        "stock": 6
+      },
+      {
+        "size": "L",
+        "stock": 0
+      },
+      {
+        "size": "XL",
+        "stock": 3
+      }
+    ],
+    "isTrending": true
+  },
+  {
+    "legacyId": 10,
+    "name": "Classic Oversized Sweatshirt",
+    "category": "Woman",
+    "price": 158.0,
+    "images": [
+      "images/woman/classic-oversized-sweatshirt_01.webp",
+      "images/woman/classic-oversized-sweatshirt_04.webp"
+    ],
+    "description": "This Classic Oversized Sweatshirt is perfect for a cozy and relaxed look. Made from high-quality material for added comfort.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 7
+      },
+      {
+        "size": "S",
+        "stock": 1
+      },
+      {
+        "size": "M",
+        "stock": 4
+      },
+      {
+        "size": "L",
+        "stock": 7
+      },
+      {
+        "size": "XL",
+        "stock": 1
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 11,
+    "name": "Straw Floppy Hat",
+    "category": "Accessories",
+    "price": 54.0,
+    "images": [
+      "images/Accessories/straw-floppy-hat_03.webp"
+    ],
+    "description": "The Straw Floppy Hat is a stylish accessory for sunny days. It offers great sun protection while adding a chic touch to your outfit.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 5
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 12,
+    "name": "Cat-Eye Glasses 20257",
+    "category": "Accessories",
+    "price": 86.0,
+    "images": [
+      "images/Accessories/sunglasses1.webp"
+    ],
+    "description": "Cat-Eye Glasses 20257 feature a classic design with a modern twist. Perfect for adding a sophisticated touch to any look.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 3
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 13,
+    "name": "Pride Sport Hip Pack",
+    "category": "Bags",
+    "price": 39.0,
+    "images": [
+      "images/Bags/Pride-Sport-Hip-Pack-_04.webp",
+      "images/Bags/Pride-Sport-Hip-Pack-_03.jpg"
+    ],
+    "description": "The Pride Sport Hip Pack is perfect for carrying essentials hands-free. Features a vibrant design and multiple compartments for convenience.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 1
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 14,
+    "name": "Dance Bag Nylon",
+    "category": "Bags",
+    "price": 18.0,
+    "images": [
+      "images/Bags/p27-3_7e6d6ca6-5882-4c64-a166-577d894b0ac3.webp",
+      "images/Bags/p27-1_1bcb95c6-a3da-4de5-b15e-ec08d4cb84b9.webp"
+    ],
+    "description": "The Dance Bag Nylon is lightweight and durable, ideal for carrying dance gear or gym essentials. Features a sleek design and ample storage space.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 8
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 15,
+    "name": "Knit Dress In Green",
+    "category": "Woman",
+    "price": 188.0,
+    "images": [
+      "images/woman/knit-dress-in-green_03.webp"
+    ],
+    "description": "The Knit Dress In Green is a versatile piece that can be dressed up or down. Made from soft, comfortable material.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 6
+      },
+      {
+        "size": "S",
+        "stock": 0
+      },
+      {
+        "size": "M",
+        "stock": 3
+      },
+      {
+        "size": "L",
+        "stock": 6
+      },
+      {
+        "size": "XL",
+        "stock": 0
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 16,
+    "name": "Beanie In Chocolate Brown",
+    "category": "Woman",
+    "price": 48.0,
+    "images": [
+      "images/woman/beanie-in-chocolate-brown_03.webp",
+      "images/woman/beanie-in-chocolate-brown_02.webp"
+    ],
+    "description": "This Beanie In Chocolate Brown is perfect for keeping warm in style. Made from soft, stretchy fabric for a comfortable fit.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 4
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 17,
+    "name": "Relaxed Gym Tank Top",
+    "category": "Woman",
+    "price": 148.0,
+    "images": [
+      "images/woman/relaxed-gym-tank-top_01.webp",
+      "images/woman/relaxed-gym-tank-top_04.webp"
+    ],
+    "description": "The Relaxed Gym Tank Top is perfect for workouts and casual wear. Made from breathable fabric for maximum comfort.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 2
+      },
+      {
+        "size": "S",
+        "stock": 5
+      },
+      {
+        "size": "M",
+        "stock": 8
+      },
+      {
+        "size": "L",
+        "stock": 2
+      },
+      {
+        "size": "XL",
+        "stock": 5
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 18,
+    "name": "Oversized Graphic Sweatshirt",
+    "category": "Woman",
+    "price": 78.0,
+    "images": [
+      "images/woman/image77.webp",
+      "images/woman/image76.webp"
+    ],
+    "description": "This Oversized Graphic Sweatshirt combines comfort and style. Perfect for a relaxed, casual look.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 0
+      },
+      {
+        "size": "S",
+        "stock": 3
+      },
+      {
+        "size": "M",
+        "stock": 6
+      },
+      {
+        "size": "L",
+        "stock": 0
+      },
+      {
+        "size": "XL",
+        "stock": 3
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 19,
+    "name": "Hoodie In Blue",
+    "category": "Man",
+    "price": 198.0,
+    "images": [
+      "images/man/hoodie-in-blue_01.webp",
+      "images/man/hoodie-in-blue_02.webp"
+    ],
+    "description": "The Hoodie In Blue offers both style and comfort. Made from high-quality material for a cozy fit.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 7
+      },
+      {
+        "size": "S",
+        "stock": 1
+      },
+      {
+        "size": "M",
+        "stock": 4
+      },
+      {
+        "size": "L",
+        "stock": 7
+      },
+      {
+        "size": "XL",
+        "stock": 1
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 20,
+    "name": "Jacket With Hood In Stone",
+    "category": "Man",
+    "price": 266.0,
+    "images": [
+      "images/man/jacket-with-hood-in-stone_02.webp",
+      "images/man/jacket-with-hood-in-stone_04.webp"
+    ],
+    "description": "This Jacket With Hood In Stone provides excellent warmth and style. Ideal for layering during cooler weather.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 5
+      },
+      {
+        "size": "S",
+        "stock": 8
+      },
+      {
+        "size": "M",
+        "stock": 2
+      },
+      {
+        "size": "L",
+        "stock": 5
+      },
+      {
+        "size": "XL",
+        "stock": 8
+      }
+    ],
+    "isTrending": true
+  },
+  {
+    "legacyId": 21,
+    "name": "Slim Formal Shirt In White",
+    "category": "Man",
+    "price": 198.0,
+    "images": [
+      "images/man/slim-formal-shirt-in-white_01.webp",
+      "images/man/slim-formal-shirt-in-white_01.webp"
+    ],
+    "description": "The Slim Formal Shirt In White is perfect for formal occasions. Made from high-quality fabric for a sharp, professional look.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 3
+      },
+      {
+        "size": "S",
+        "stock": 6
+      },
+      {
+        "size": "M",
+        "stock": 0
+      },
+      {
+        "size": "L",
+        "stock": 3
+      },
+      {
+        "size": "XL",
+        "stock": 6
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 22,
+    "name": "Tapered Pants In Camel",
+    "category": "Man",
+    "price": 106.0,
+    "images": [
+      "images/man/tapered-pants-in-camel-_01.webp",
+      "images/man/tapered-pants-in-camel-_04.webp"
+    ],
+    "description": "Tapered Pants In Camel offer a modern fit and stylish design. Perfect for both casual and formal wear.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 1
+      },
+      {
+        "size": "S",
+        "stock": 4
+      },
+      {
+        "size": "M",
+        "stock": 7
+      },
+      {
+        "size": "L",
+        "stock": 1
+      },
+      {
+        "size": "XL",
+        "stock": 4
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 23,
+    "name": "Sleeve Flower Print Revere",
+    "category": "Man",
+    "price": 52.0,
+    "images": [
+      "images/man/sleeve-flower-print-revere_02.webp"
+    ],
+    "description": "The Sleeve Flower Print Revere shirt features a unique floral design. Ideal for adding a touch of style to your wardrobe.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 8
+      },
+      {
+        "size": "S",
+        "stock": 2
+      },
+      {
+        "size": "M",
+        "stock": 5
+      },
+      {
+        "size": "L",
+        "stock": 8
+      },
+      {
+        "size": "XL",
+        "stock": 2
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 24,
+    "name": "Color Block Bucket Hat",
+    "category": "Man",
+    "price": 35.0,
+    "images": [
+      "images/man/Color-block-bucket-hat_03.webp",
+      "images/man/Color-block-bucket-hat_04.webp"
+    ],
+    "description": "This Color Block Bucket Hat is perfect for a trendy look. It offers great sun protection and a stylish design.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 6
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 25,
+    "name": "Cargo Pants With Front Pocket",
+    "category": "Man",
+    "price": 52.0,
+    "images": [
+      "images/man/cargo-pants-with-front-pocket_04.webp",
+      "images/man/cargo-pants-with-front-pocket_03.webp"
+    ],
+    "description": "Cargo Pants With Front Pocket are practical and stylish. Perfect for casual wear with plenty of storage space.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 4
+      },
+      {
+        "size": "S",
+        "stock": 7
+      },
+      {
+        "size": "M",
+        "stock": 1
+      },
+      {
+        "size": "L",
+        "stock": 4
+      },
+      {
+        "size": "XL",
+        "stock": 7
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 26,
+    "name": "Butterfly Charm Hoop Earrings",
+    "category": "Jewelry",
+    "price": 71.0,
+    "images": [
+      "images/Jewelry/Butterfly-Charm-Hoop-Earring_03.webp",
+      "images/Jewelry/Butterfly-Charm-Hoop-Earring_02.webp"
+    ],
+    "description": "Butterfly Charm Hoop Earrings add a whimsical touch to any outfit. Made with high-quality materials for lasting wear.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 2
+      }
+    ],
+    "isTrending": true
+  },
+  {
+    "legacyId": 27,
+    "name": "Row Clear Cz Ring",
+    "category": "Jewelry",
+    "price": 198.0,
+    "images": [
+      "images/Jewelry/ROW-CLEAR-CZ-RING_03.webp",
+      "images/Jewelry/ROW-CLEAR-CZ-RING_02.webp"
+    ],
+    "description": "The Row Clear Cz Ring is a stunning piece of jewelry. Features sparkling cubic zirconia for a touch of elegance.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 0
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 28,
+    "name": "Pin Clear Cz Ring",
+    "category": "Jewelry",
+    "price": 71.0,
+    "images": [
+      "images/Jewelry/PIN-CLEAR-CZ-RING_01.webp",
+      "images/Jewelry/PIN-CLEAR-CZ-RING_02.webp"
+    ],
+    "description": "Pin Clear Cz Ring is a stylish accessory. Made with high-quality materials and sparkling cubic zirconia.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 7
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 29,
+    "name": "Gold Tone Clear Cz Ring",
+    "category": "Jewelry",
+    "price": 106.0,
+    "images": [
+      "images/Jewelry/GOLD-TONE-CLEAR-CZ_03.webp",
+      "images/Jewelry/GOLD-TONE-CLEAR-CZ_04.webp"
+    ],
+    "description": "The Gold Tone Clear Cz Ring adds a touch of luxury to any outfit. Features beautiful cubic zirconia set in gold-tone metal.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 5
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 30,
+    "name": "Gold Tone Star & Moon Bracelet",
+    "category": "Jewelry",
+    "price": 166.0,
+    "images": [
+      "images/Jewelry/Diamante-Butterfly-Necklace_01.webp"
+    ],
+    "description": "The Gold Tone Star & Moon Bracelet is a celestial-inspired piece. Perfect for adding a touch of elegance to your look.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 3
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 31,
+    "name": "Clear Cz Floral Letter Necklace",
+    "category": "Jewelry",
+    "price": 195.0,
+    "images": [
+      "images/Jewelry/CLEAR-CZ-FLORAL-LETTER-NECKLACE_01.webp",
+      "images/Jewelry/CLEAR-CZ-FLORAL-LETTER-NECKLACE_02.webp"
+    ],
+    "description": "The Clear Cz Floral Letter Necklace is a personalized piece. Features sparkling cubic zirconia in a floral design.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 1
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 32,
+    "name": "Adjustable Bowline Necklace",
+    "category": "Jewelry",
+    "price": 86.0,
+    "images": [
+      "images/Jewelry/ADJUSTABLE-BOWLINE-NECKLACE_01.webp"
+    ],
+    "description": "The Adjustable Bowline Necklace is versatile and stylish. Can be worn at different lengths for a custom look.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 8
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 33,
+    "name": "Denim Jacket Sun Bleached",
+    "category": "Woman",
+    "price": 199.0,
+    "images": [
+      "images/woman/Jacket-_-Sun-Bleached_01.webp",
+      "images/woman/Jacket-_-Sun-Bleached_02.webp",
+      "images/woman/Jacket-_-Sun-Bleached_03.webp"
+    ],
+    "description": "The Denim Jacket Sun Bleached offers a stylish and trendy look with its sun-bleached finish. Perfect for layering over casual outfits, this jacket is made from high-quality denim and features a comfortable fit. Ideal for adding a touch of edge to your wardrobe.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 6
+      },
+      {
+        "size": "S",
+        "stock": 0
+      },
+      {
+        "size": "M",
+        "stock": 3
+      },
+      {
+        "size": "L",
+        "stock": 6
+      },
+      {
+        "size": "XL",
+        "stock": 0
+      }
+    ],
+    "isTrending": true
+  },
+  {
+    "legacyId": 34,
+    "name": "Wide Strap Crossbody Bag",
+    "category": "Bags",
+    "price": 64.0,
+    "images": [
+      "images/Bags/crossbody-bag-with-wide-strap_01.webp",
+      "images/Bags/crossbody-bag-with-wide-strap_02.webp"
+    ],
+    "description": "A smooth black crossbody in a clean rectangular shape, hung on a wide adjustable strap. Roomy enough for a phone, cards and keys.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 4
+      }
+    ],
+    "isTrending": true
+  },
+  {
+    "legacyId": 35,
+    "name": "Laptop Shopper Tote",
+    "category": "Bags",
+    "price": 72.0,
+    "images": [
+      "images/Bags/shopper-bag-with-laptop_01.webp",
+      "images/Bags/shopper-bag-with-laptop_02.webp"
+    ],
+    "description": "A soft sage shopper with a padded laptop sleeve inside. Light, unstructured and big enough for a full day out.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 2
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 36,
+    "name": "Nylon Mini Backpack",
+    "category": "Bags",
+    "price": 58.0,
+    "images": [
+      "images/Bags/dance_nylon_main.webp",
+      "images/Bags/dance_nylon_01.webp"
+    ],
+    "description": "A compact nylon backpack in dusty pink with gold-tone chain detailing and zip pockets front and back.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 0
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 37,
+    "name": "Quilted Heeled Mule",
+    "category": "Accessories",
+    "price": 128.0,
+    "images": [
+      "images/Accessories/Quilted-Heeled-Mule-Sandal_02.webp"
+    ],
+    "description": "A powder-blue mule with a quilted upper and a sculpted block heel. Comfortable enough to wear all evening.",
+    "sizes": [
+      {
+        "size": "UK 4",
+        "stock": 7
+      },
+      {
+        "size": "UK 5",
+        "stock": 1
+      },
+      {
+        "size": "UK 6",
+        "stock": 4
+      },
+      {
+        "size": "UK 7",
+        "stock": 7
+      },
+      {
+        "size": "UK 8",
+        "stock": 1
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 38,
+    "name": "Iridescent Flower Drop Earrings",
+    "category": "Jewelry",
+    "price": 68.0,
+    "images": [
+      "images/Jewelry/Flower-Drop-Earrings_01.webp"
+    ],
+    "description": "Gold-tone open hoops finished with iridescent petal clusters that catch the light as you move.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 5
+      }
+    ],
+    "isTrending": true
+  },
+  {
+    "legacyId": 39,
+    "name": "Crystal Tassel Earrings",
+    "category": "Jewelry",
+    "price": 94.0,
+    "images": [
+      "images/Jewelry/Gold-Teardrop-Tassle-Earrings_01.webp"
+    ],
+    "description": "Long teardrop earrings strung with blush crystal beads. Light to wear despite the dramatic drop.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 3
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 40,
+    "name": "Star & Moon Charm Bracelet",
+    "category": "Jewelry",
+    "price": 112.0,
+    "images": [
+      "images/Jewelry/GOLD-TONE-STAR-_-MOON-BRACELET_04.webp"
+    ],
+    "description": "A delicate gold-tone chain scattered with star and crescent charms and pale stone beads. Adjustable fastening.",
+    "sizes": [
+      {
+        "size": "One Size",
+        "stock": 1
+      }
+    ],
+    "isTrending": false
+  },
+  {
+    "legacyId": 41,
+    "name": "Leather Chunky Sneakers",
+    "category": "Man",
+    "price": 145.0,
+    "images": [
+      "images/man/Leather-Chunky-Sneakers_02_6be7309f-0f67-4fff-8c5c-5d7a227d8a6d.webp"
+    ],
+    "description": "An all-white leather trainer on a chunky treaded sole. Clean enough to dress up, solid enough for every day.",
+    "sizes": [
+      {
+        "size": "UK 4",
+        "stock": 8
+      },
+      {
+        "size": "UK 5",
+        "stock": 2
+      },
+      {
+        "size": "UK 6",
+        "stock": 5
+      },
+      {
+        "size": "UK 7",
+        "stock": 8
+      },
+      {
+        "size": "UK 8",
+        "stock": 2
+      }
+    ],
+    "isTrending": true
+  },
+  {
+    "legacyId": 42,
+    "name": "Slim Formal Trousers",
+    "category": "Man",
+    "price": 89.0,
+    "images": [
+      "images/man/slim-formal-shirt-in-white_03.webp"
+    ],
+    "description": "Tailored grey trousers with a slim leg and a pressed crease. Works with a shirt or a plain tee.",
+    "sizes": [
+      {
+        "size": "XS",
+        "stock": 6
+      },
+      {
+        "size": "S",
+        "stock": 0
+      },
+      {
+        "size": "M",
+        "stock": 3
+      },
+      {
+        "size": "L",
+        "stock": 6
+      },
+      {
+        "size": "XL",
+        "stock": 0
+      }
+    ],
+    "isTrending": false
+  }
+];
+
+export default products;

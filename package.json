@@ -1,0 +1,21 @@
+{
+  "name": "clothing-website",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "engines": { "node": ">=20.6" },
+  "scripts": {
+    "server": "node --env-file=.env --watch server/dev.js",
+    "seed": "node --env-file=.env server/seed/seed.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^3.0.2",
+    "cloudinary": "^2.6.1",
+    "cookie-parser": "^1.4.7",
+    "cors": "^2.8.5",
+    "express": "^5.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.0",
+    "multer": "^2.0.1"
+  }
+}
